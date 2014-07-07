@@ -8,7 +8,7 @@ typedef struct
 	int length;
 }Strings;
 
-Strings *StringNew(int length);
+Strings *StringNew();
 void StringTrim(Strings *str, char StringChar[]);
 Strings *StringRemoveWordContaining (Strings *str , char *ContainSet);
 #endif // StringObject_H

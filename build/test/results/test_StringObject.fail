@@ -1,0 +1,30 @@
+---
+:source:
+  :path: test
+  :file: test_StringObject.c
+:successes:
+- :test: test_StringTrim_should_skip_spaces_in_left_sides_and_store_in_strStrings
+  :line: 13
+  :message: ''
+- :test: test_StringTrim_should_skip_spaces_in_right_sides_and_store_in_strStrings
+  :line: 21
+  :message: ''
+- :test: test_StringTrim_should_skip_all_spaces_and_store_in_strStrings
+  :line: 29
+  :message: ''
+- :test: test_StringRemoveWordContaining_given_HELLO_should_remove_Lx2
+  :line: 37
+  :message: ''
+:failures:
+- :test: test_StringRemoveWordContaining_MAXIS_should_remove_A_and_I
+  :line: 65
+  :message: Expected 2 Was 3
+:ignores: []
+:counts:
+  :total: 5
+  :passed: 4
+  :failed: 1
+  :ignored: 0
+:stdout:
+- RemovedWord->strings = A
+- str->strings = I

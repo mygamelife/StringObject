@@ -8,8 +8,11 @@
   Unity.NumberOfTests++; \
   if (TEST_PROTECT()) \
   { \
+    CEXCEPTION_T e; \
+    Try { \
       setUp(); \
       TestFunc(); \
+    } Catch(e) { TEST_ASSERT_EQUAL_HEX32_MESSAGE(CEXCEPTION_NONE, e, "Unhandled Exception!"); } \
   } \
   if (TEST_PROTECT() && !TEST_IS_IGNORED) \
   { \
@@ -22,6 +25,7 @@
 #include "unity.h"
 #include <setjmp.h>
 #include <stdio.h>
+#include "CException.h"
 
 int GlobalExpectCount;
 int GlobalVerifyOrder;
@@ -33,7 +37,8 @@ extern void tearDown(void);
 extern void test_StringTrim_should_skip_spaces_in_left_sides_and_store_in_strStrings(void);
 extern void test_StringTrim_should_skip_spaces_in_right_sides_and_store_in_strStrings(void);
 extern void test_StringTrim_should_skip_all_spaces_and_store_in_strStrings(void);
-extern void test_StringRemoveWordContaining_given_3_plus_3_should_remove_two_3(void);
+extern void test_StringRemoveWordContaining_given_HELLO_should_remove_Lx2(void);
+extern void test_StringRemoveWordContaining_MAXIS_should_remove_A_and_I(void);
 
 
 //=======Test Reset Option=====
@@ -52,7 +57,8 @@ int main(void)
   RUN_TEST(test_StringTrim_should_skip_spaces_in_left_sides_and_store_in_strStrings, 13);
   RUN_TEST(test_StringTrim_should_skip_spaces_in_right_sides_and_store_in_strStrings, 21);
   RUN_TEST(test_StringTrim_should_skip_all_spaces_and_store_in_strStrings, 29);
-  RUN_TEST(test_StringRemoveWordContaining_given_3_plus_3_should_remove_two_3, 37);
+  RUN_TEST(test_StringRemoveWordContaining_given_HELLO_should_remove_Lx2, 37);
+  RUN_TEST(test_StringRemoveWordContaining_MAXIS_should_remove_A_and_I, 52);
 
   return (UnityEnd());
 }
