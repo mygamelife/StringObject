@@ -66,7 +66,7 @@ void tearDown(void)
 
 
 
-       void test_StringRemoveWordContaining_given_HELLO_should_remove_Lx2(void)
+       void Xtest_StringRemoveWordContaining_given_HELLO_should_remove_L(void)
 
 {
 
@@ -106,24 +106,50 @@ void tearDown(void)
 
  StringTrim(str , "MAXIS");
 
- RemovedWord = StringRemoveWordContaining(str , "AI");
+ RemovedWord = StringRemoveWordContaining(str , "AX");
 
 
 
- printf("RemovedWord->strings = %c\n" , RemovedWord->strings[RemovedWord->startindex]);
-
- printf("str->strings = %c\n" , str->strings[str->startindex]);
 
 
+ UnityAssertEqualNumber((_U_SINT)((1)), (_U_SINT)((RemovedWord->startindex)), (((void *)0)), (_U_UINT)60, UNITY_DISPLAY_STYLE_INT);
 
- UnityAssertEqualNumber((_U_SINT)((1)), (_U_SINT)((RemovedWord->startindex)), (((void *)0)), (_U_UINT)62, UNITY_DISPLAY_STYLE_INT);
-
- UnityAssertEqualNumber((_U_SINT)((1)), (_U_SINT)((RemovedWord->length)), (((void *)0)), (_U_UINT)63, UNITY_DISPLAY_STYLE_INT);
+ UnityAssertEqualNumber((_U_SINT)((2)), (_U_SINT)((RemovedWord->length)), (((void *)0)), (_U_UINT)61, UNITY_DISPLAY_STYLE_INT);
 
 
 
- UnityAssertEqualNumber((_U_SINT)((2)), (_U_SINT)((str->startindex)), (((void *)0)), (_U_UINT)65, UNITY_DISPLAY_STYLE_INT);
+ UnityAssertEqualNumber((_U_SINT)((3)), (_U_SINT)((str->startindex)), (((void *)0)), (_U_UINT)63, UNITY_DISPLAY_STYLE_INT);
 
- UnityAssertEqualNumber((_U_SINT)((3)), (_U_SINT)((str->length)), (((void *)0)), (_U_UINT)66, UNITY_DISPLAY_STYLE_INT);
+ UnityAssertEqualNumber((_U_SINT)((2)), (_U_SINT)((str->length)), (((void *)0)), (_U_UINT)64, UNITY_DISPLAY_STYLE_INT);
+
+}
+
+
+
+       void test_StringRemoveWordContaining_LECTURE_should_remove_CTU(void)
+
+{
+
+ Strings *RemovedWord;
+
+ Strings *str = StringNew();
+
+ StringTrim(str , "LECTURE");
+
+ RemovedWord = StringRemoveWordContaining(str , "CTU");
+
+
+
+
+
+ UnityAssertEqualNumber((_U_SINT)((2)), (_U_SINT)((RemovedWord->startindex)), (((void *)0)), (_U_UINT)75, UNITY_DISPLAY_STYLE_INT);
+
+ UnityAssertEqualNumber((_U_SINT)((3)), (_U_SINT)((RemovedWord->length)), (((void *)0)), (_U_UINT)76, UNITY_DISPLAY_STYLE_INT);
+
+
+
+ UnityAssertEqualNumber((_U_SINT)((5)), (_U_SINT)((str->startindex)), (((void *)0)), (_U_UINT)78, UNITY_DISPLAY_STYLE_INT);
+
+ UnityAssertEqualNumber((_U_SINT)((2)), (_U_SINT)((str->length)), (((void *)0)), (_U_UINT)79, UNITY_DISPLAY_STYLE_INT);
 
 }

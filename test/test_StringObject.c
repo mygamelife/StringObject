@@ -34,7 +34,7 @@ void tearDown(void)
 	TEST_ASSERT_EQUAL(5 , strlen(str->strings));
 }
 
-/*#4*/ void test_StringRemoveWordContaining_given_HELLO_should_remove_Lx2(void)
+/*#4*/ void Xtest_StringRemoveWordContaining_given_HELLO_should_remove_L(void)
 {
 	Strings *RemovedWord;
 	Strings *str = StringNew();
@@ -54,14 +54,27 @@ void tearDown(void)
 	Strings *RemovedWord;
 	Strings *str = StringNew();
 	StringTrim(str , "MAXIS");
-	RemovedWord = StringRemoveWordContaining(str , "AI");
+	RemovedWord = StringRemoveWordContaining(str , "AX");
 	
-	printf("RemovedWord->strings = %c\n" , RemovedWord->strings[RemovedWord->startindex]);
-	printf("str->strings = %c\n" , str->strings[str->startindex]);
 	/*Removed String*/
 	TEST_ASSERT_EQUAL(1 , RemovedWord->startindex);
-	TEST_ASSERT_EQUAL(1 , RemovedWord->length);
+	TEST_ASSERT_EQUAL(2 , RemovedWord->length);
 	/*Original String after Removed Word Containing*/
-	TEST_ASSERT_EQUAL(2 , str->startindex);
-	TEST_ASSERT_EQUAL(3 , str->length);
+	TEST_ASSERT_EQUAL(3 , str->startindex);
+	TEST_ASSERT_EQUAL(2 , str->length);
+}
+
+/*#6*/ void test_StringRemoveWordContaining_LECTURE_should_remove_CTU(void)
+{
+	Strings *RemovedWord;
+	Strings *str = StringNew();
+	StringTrim(str , "LECTURE");
+	RemovedWord = StringRemoveWordContaining(str , "CTU");
+	
+	/*Removed String*/
+	TEST_ASSERT_EQUAL(2 , RemovedWord->startindex);
+	TEST_ASSERT_EQUAL(3 , RemovedWord->length);
+	/*Original String after Removed Word Containing*/
+	TEST_ASSERT_EQUAL(5 , str->startindex);
+	TEST_ASSERT_EQUAL(2 , str->length);
 }

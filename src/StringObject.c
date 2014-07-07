@@ -43,7 +43,7 @@ void StringTrim(Strings *str , char StringChar[])
 */
 Strings *StringRemoveWordContaining(Strings *str , char *ContainSet)
 {
-	int i = 0, j = 0 , k = 0;
+	int i = 0, j = 0 , k = 0 , FirstFound = 0 , SecondFound = 0;
 	
 	Strings *RemovedWord = StringNew(); //create new Strings for RemovedWord
 	str->length = strlen(str->strings); //assign original string length to str->length
@@ -55,25 +55,21 @@ Strings *StringRemoveWordContaining(Strings *str , char *ContainSet)
 		{
 			if(str->strings[i] == ContainSet[j])
 			{
-				if(RemovedWord->startindex == 0)
+				if(!FirstFound)
 				{
-					RemovedWord->startindex = i; //first character position contain in ContainSet
-					RemovedWord->length++; //one word is detected in ContainSet
+					RemovedWord->startindex = i; //first character found	
+					FirstFound = 1;
+					if(i != 0)
+						str->length = str->length - i;
+					printf("First Character detected = %c\n\n" , str->strings[i]);
 				}
 				
-				else if(RemovedWord->strings[RemovedWord->startindex+1] == ContainSet[j])
-					RemovedWord->length++;
 				
-				else if(RemovedWord->strings[RemovedWord->startindex+1] != ContainSet[j])
-				{
-					str->startindex = i;
-					goto jump;
-				}
-
+				RemovedWord->length++; //one word is detected in ContainSet
+				str->startindex = i+1;
 				str->length--; //decrement once after one word removed
+				printf("str->length = %d\n\n" , str->length);
 			}
-			
-			else str->startindex = i; //position after removed word in ContainSet
 			
 			j++;
 		}
@@ -81,7 +77,7 @@ Strings *StringRemoveWordContaining(Strings *str , char *ContainSet)
 		i++;
 		j = 0;
 	}
+jump:
 	
-	jump:
 	return RemovedWord;
 }
