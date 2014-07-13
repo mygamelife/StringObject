@@ -3,7 +3,7 @@
 #include <string.h>
 #include <malloc.h>
 
-Strings *StringNew()
+Strings *stringNew()
 {
 	Strings *str = malloc(sizeof(Strings));
 	str->strings = malloc(sizeof(char));
@@ -37,18 +37,17 @@ void StringTrim(Strings *str , char StringChar[])
 
 /* To remove words contain in ContainSet
  * input :
- *		ContainSet character need to be remove
+ *		ContainSet character that need to be remove
  * return:
- *		Return the RemovedWord
+ *		Return the removedWord start index and length
 */
-Strings *StringRemoveWordContaining(Strings *str , char *ContainSet)
+Strings *stringRemoveWordContaining(Strings *str , char *ContainSet)
 {
-	int i = 0, j = 0 , k = 0 , FirstFound = 0 , NotInSet = 0;
+	int i = 0, j = 0 , k = 0 , firstFound = 0 , notInSet = 0;
 	
-	Strings *RemovedWord = StringNew(); //create new Strings for RemovedWord
+	Strings *removedWord = stringNew(); //create new Strings for removedWord
 	str->length = strlen(str->strings); //assign original string length to str->length
-	RemovedWord->strings = str->strings; 
-	printf("%s\n",str->strings);
+	removedWord->strings = str->strings; 
 	
 	while(i < strlen(str->strings))
 	{
@@ -56,32 +55,85 @@ Strings *StringRemoveWordContaining(Strings *str , char *ContainSet)
 		{
 			if(str->strings[i] == ContainSet[j])
 			{
-				if(!FirstFound)
+				if(!firstFound)
 				{
-					RemovedWord->startindex = i; //first character found	
-					FirstFound = 1;
+					removedWord->startindex = i; //first character found	
+					firstFound = 1;
 					if(i != 0)
 						str->length = str->length - i;
-					printf("First Character detected = %c\n\n" , str->strings[i]);
 				}
 				
-				
-				RemovedWord->length++; //one word is detected in ContainSet
+				removedWord->length++; //one word is detected in ContainSet
 				str->startindex = i+1;
 				str->length--; //decrement once after one word removed
-				NotInSet = 0;
+				notInSet = 0;
 				goto jump;
 			}
 			
-			if(FirstFound == 1)
-				NotInSet = 1;
+			if(firstFound == 1)
+				notInSet = 1;
 				
 			j++;
 		}
 		
-		if(NotInSet == 1)
+		if(notInSet == 1)
+			goto end;
+
+jump:		
+		i++;		
+		j = 0;
+	}	
+
+end:
+	return removedWord;
+}
+
+/* To remove words not contain in ContainSet
+ * input :
+ *		notContainSet character that don't need to be remove
+ * return:
+ *		Return the removedWord start index and length
+*/
+Strings *stringRemoveWordNotContaining(Strings *str , char *notContainSet)
+{
+	int i = 0, j = 0 , k = 0 , firstFound = 0 , notInSet = 0;
+	
+	Strings *notremovedWord = stringNew(); //create new Strings for removedWord
+	str->length = strlen(str->strings); //assign original string length to str->length
+	notremovedWord->strings = str->strings; 
+	printf("%s\n",str->strings);
+	
+	while(i < strlen(str->strings))
+	{
+		while(j != strlen(notContainSet))
 		{
-			printf("Character not in list = %c\n\n" , str->strings[str->startindex]);
+			if(notremovedWord->strings[i] != notContainSet[j])
+			{
+				if(!firstFound)
+				{
+					notremovedWord->startindex = i; //first character found	
+					firstFound = 1;
+					if(i != 0)
+						str->length = str->length - i;
+					printf("First Character not in ContainSet = %c\n\n" , str->strings[i]);
+				}
+				
+				notremovedWord->length++; //one word is detected in ContainSet
+				str->startindex = i+1;
+				str->length--; //decrement once after one word removed
+				notInSet = 0;
+				goto jump;
+			}
+			
+			if(firstFound == 1)
+				notInSet = 1;
+				
+			j++;
+		}
+		
+		if(notInSet == 1)
+		{
+			printf("Character in notcontainset = %c\n\n" , str->strings[str->startindex]);
 			goto end;
 		}
 jump:		
@@ -90,5 +142,5 @@ jump:
 	}	
 
 end:
-	return RemovedWord;
+	return notremovedWord;
 }
