@@ -64,39 +64,7 @@ void tearDown(void)
 
 }
 
-
-
-       void Xtest_StringRemoveWordContaining_given_HELLO_should_remove_L(void)
-
-{
-
- Strings *RemovedWord;
-
- Strings *str = StringNew();
-
- StringTrim(str , "HELLO");
-
- RemovedWord = StringRemoveWordContaining(str , "L");
-
-
-
-
-
- UnityAssertEqualNumber((_U_SINT)((2)), (_U_SINT)((RemovedWord->startindex)), (((void *)0)), (_U_UINT)45, UNITY_DISPLAY_STYLE_INT);
-
- UnityAssertEqualNumber((_U_SINT)((2)), (_U_SINT)((RemovedWord->length)), (((void *)0)), (_U_UINT)46, UNITY_DISPLAY_STYLE_INT);
-
-
-
- UnityAssertEqualNumber((_U_SINT)((4)), (_U_SINT)((str->startindex)), (((void *)0)), (_U_UINT)48, UNITY_DISPLAY_STYLE_INT);
-
- UnityAssertEqualNumber((_U_SINT)((3)), (_U_SINT)((str->length)), (((void *)0)), (_U_UINT)49, UNITY_DISPLAY_STYLE_INT);
-
-}
-
-
-
-       void test_StringRemoveWordContaining_MAXIS_should_remove_A_and_I(void)
+       void test_StringRemoveWordContaining_MAXIS_should_remove_A(void)
 
 {
 
@@ -106,7 +74,7 @@ void tearDown(void)
 
  StringTrim(str , "MAXIS");
 
- RemovedWord = StringRemoveWordContaining(str , "AX");
+ RemovedWord = StringRemoveWordContaining(str , "AI");
 
 
 
@@ -114,13 +82,13 @@ void tearDown(void)
 
  UnityAssertEqualNumber((_U_SINT)((1)), (_U_SINT)((RemovedWord->startindex)), (((void *)0)), (_U_UINT)60, UNITY_DISPLAY_STYLE_INT);
 
- UnityAssertEqualNumber((_U_SINT)((2)), (_U_SINT)((RemovedWord->length)), (((void *)0)), (_U_UINT)61, UNITY_DISPLAY_STYLE_INT);
+ UnityAssertEqualNumber((_U_SINT)((1)), (_U_SINT)((RemovedWord->length)), (((void *)0)), (_U_UINT)61, UNITY_DISPLAY_STYLE_INT);
 
 
 
- UnityAssertEqualNumber((_U_SINT)((3)), (_U_SINT)((str->startindex)), (((void *)0)), (_U_UINT)63, UNITY_DISPLAY_STYLE_INT);
+ UnityAssertEqualNumber((_U_SINT)((2)), (_U_SINT)((str->startindex)), (((void *)0)), (_U_UINT)63, UNITY_DISPLAY_STYLE_INT);
 
- UnityAssertEqualNumber((_U_SINT)((2)), (_U_SINT)((str->length)), (((void *)0)), (_U_UINT)64, UNITY_DISPLAY_STYLE_INT);
+ UnityAssertEqualNumber((_U_SINT)((3)), (_U_SINT)((str->length)), (((void *)0)), (_U_UINT)64, UNITY_DISPLAY_STYLE_INT);
 
 }
 
@@ -136,7 +104,7 @@ void tearDown(void)
 
  StringTrim(str , "LECTURE");
 
- RemovedWord = StringRemoveWordContaining(str , "CTU");
+ RemovedWord = StringRemoveWordContaining(str , "UTC");
 
 
 
@@ -151,5 +119,35 @@ void tearDown(void)
  UnityAssertEqualNumber((_U_SINT)((5)), (_U_SINT)((str->startindex)), (((void *)0)), (_U_UINT)78, UNITY_DISPLAY_STYLE_INT);
 
  UnityAssertEqualNumber((_U_SINT)((2)), (_U_SINT)((str->length)), (((void *)0)), (_U_UINT)79, UNITY_DISPLAY_STYLE_INT);
+
+}
+
+
+
+       void test_StringRemoveWordContaining_321_plus_432_should_remove_321(void)
+
+{
+
+ Strings *RemovedWord;
+
+ Strings *str = StringNew();
+
+ StringTrim(str , "321 + 432 ");
+
+ RemovedWord = StringRemoveWordContaining(str , "01234");
+
+
+
+
+
+ UnityAssertEqualNumber((_U_SINT)((0)), (_U_SINT)((RemovedWord->startindex)), (((void *)0)), (_U_UINT)90, UNITY_DISPLAY_STYLE_INT);
+
+ UnityAssertEqualNumber((_U_SINT)((3)), (_U_SINT)((RemovedWord->length)), (((void *)0)), (_U_UINT)91, UNITY_DISPLAY_STYLE_INT);
+
+
+
+ UnityAssertEqualNumber((_U_SINT)((3)), (_U_SINT)((str->startindex)), (((void *)0)), (_U_UINT)93, UNITY_DISPLAY_STYLE_INT);
+
+ UnityAssertEqualNumber((_U_SINT)((4)), (_U_SINT)((str->length)), (((void *)0)), (_U_UINT)94, UNITY_DISPLAY_STYLE_INT);
 
 }

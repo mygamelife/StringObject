@@ -34,34 +34,34 @@ void tearDown(void)
 	TEST_ASSERT_EQUAL(5 , strlen(str->strings));
 }
 
-/*#4*/ void Xtest_StringRemoveWordContaining_given_HELLO_should_remove_L(void)
-{
-	Strings *RemovedWord;
-	Strings *str = StringNew();
-	StringTrim(str , "HELLO");
-	RemovedWord = StringRemoveWordContaining(str , "L");
+// /*#4*/ void Xtest_StringRemoveWordContaining_given_HELLO_should_remove_L(void)
+// {
+	// Strings *RemovedWord;
+	// Strings *str = StringNew();
+	// StringTrim(str , "HELLO");
+	// RemovedWord = StringRemoveWordContaining(str , "L");
 	
-	/*Removed String*/
-	TEST_ASSERT_EQUAL(2 , RemovedWord->startindex);
-	TEST_ASSERT_EQUAL(2 , RemovedWord->length);
-	/*Original String after Removed Word Containing*/
-	TEST_ASSERT_EQUAL(4 , str->startindex);
-	TEST_ASSERT_EQUAL(3 , str->length);
-}
+	// /*Removed String*/
+	// TEST_ASSERT_EQUAL(2 , RemovedWord->startindex);
+	// TEST_ASSERT_EQUAL(2 , RemovedWord->length);
+	// /*Original String after Removed Word Containing*/
+	// TEST_ASSERT_EQUAL(4 , str->startindex);
+	// TEST_ASSERT_EQUAL(3 , str->length);
+// }
 
-/*#5*/ void test_StringRemoveWordContaining_MAXIS_should_remove_A_and_I(void)
+/*#5*/ void test_StringRemoveWordContaining_MAXIS_should_remove_A(void)
 {
 	Strings *RemovedWord;
 	Strings *str = StringNew();
 	StringTrim(str , "MAXIS");
-	RemovedWord = StringRemoveWordContaining(str , "AX");
+	RemovedWord = StringRemoveWordContaining(str , "AI");
 	
 	/*Removed String*/
 	TEST_ASSERT_EQUAL(1 , RemovedWord->startindex);
-	TEST_ASSERT_EQUAL(2 , RemovedWord->length);
+	TEST_ASSERT_EQUAL(1 , RemovedWord->length);
 	/*Original String after Removed Word Containing*/
-	TEST_ASSERT_EQUAL(3 , str->startindex);
-	TEST_ASSERT_EQUAL(2 , str->length);
+	TEST_ASSERT_EQUAL(2 , str->startindex);
+	TEST_ASSERT_EQUAL(3 , str->length);
 }
 
 /*#6*/ void test_StringRemoveWordContaining_LECTURE_should_remove_CTU(void)
@@ -69,7 +69,7 @@ void tearDown(void)
 	Strings *RemovedWord;
 	Strings *str = StringNew();
 	StringTrim(str , "LECTURE");
-	RemovedWord = StringRemoveWordContaining(str , "CTU");
+	RemovedWord = StringRemoveWordContaining(str , "UTC");
 	
 	/*Removed String*/
 	TEST_ASSERT_EQUAL(2 , RemovedWord->startindex);
@@ -77,4 +77,19 @@ void tearDown(void)
 	/*Original String after Removed Word Containing*/
 	TEST_ASSERT_EQUAL(5 , str->startindex);
 	TEST_ASSERT_EQUAL(2 , str->length);
+}
+
+/*#7*/ void test_StringRemoveWordContaining_321_plus_432_should_remove_321(void)
+{
+	Strings *RemovedWord;
+	Strings *str = StringNew();
+	StringTrim(str , "321 + 432 ");
+	RemovedWord = StringRemoveWordContaining(str , "01234");
+	
+	/*Removed String*/
+	TEST_ASSERT_EQUAL(0 , RemovedWord->startindex);
+	TEST_ASSERT_EQUAL(3 , RemovedWord->length);
+	/*Original String after Removed Word Containing*/
+	TEST_ASSERT_EQUAL(3 , str->startindex);
+	TEST_ASSERT_EQUAL(4 , str->length);
 }

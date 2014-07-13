@@ -43,11 +43,12 @@ void StringTrim(Strings *str , char StringChar[])
 */
 Strings *StringRemoveWordContaining(Strings *str , char *ContainSet)
 {
-	int i = 0, j = 0 , k = 0 , FirstFound = 0 , SecondFound = 0;
+	int i = 0, j = 0 , k = 0 , FirstFound = 0 , NotInSet = 0;
 	
 	Strings *RemovedWord = StringNew(); //create new Strings for RemovedWord
 	str->length = strlen(str->strings); //assign original string length to str->length
 	RemovedWord->strings = str->strings; 
+	printf("%s\n",str->strings);
 	
 	while(i < strlen(str->strings))
 	{
@@ -68,16 +69,26 @@ Strings *StringRemoveWordContaining(Strings *str , char *ContainSet)
 				RemovedWord->length++; //one word is detected in ContainSet
 				str->startindex = i+1;
 				str->length--; //decrement once after one word removed
-				printf("str->length = %d\n\n" , str->length);
+				NotInSet = 0;
+				goto jump;
 			}
 			
+			if(FirstFound == 1)
+				NotInSet = 1;
+				
 			j++;
 		}
 		
-		i++;
+		if(NotInSet == 1)
+		{
+			printf("Character not in list = %c\n\n" , str->strings[str->startindex]);
+			goto end;
+		}
+jump:		
+		i++;		
 		j = 0;
-	}
-jump:
-	
+	}	
+
+end:
 	return RemovedWord;
 }

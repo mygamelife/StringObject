@@ -12,31 +12,35 @@
 - :test: test_StringTrim_should_skip_all_spaces_and_store_in_strStrings
   :line: 29
   :message: ''
-- :test: test_StringRemoveWordContaining_MAXIS_should_remove_A_and_I
+- :test: test_StringRemoveWordContaining_MAXIS_should_remove_A
   :line: 52
   :message: ''
 - :test: test_StringRemoveWordContaining_LECTURE_should_remove_CTU
   :line: 67
   :message: ''
+- :test: test_StringRemoveWordContaining_321_plus_432_should_remove_321
+  :line: 82
+  :message: ''
 :failures: []
 :ignores: []
 :counts:
-  :total: 5
-  :passed: 5
+  :total: 6
+  :passed: 6
   :failed: 0
   :ignored: 0
 :stdout:
+- MAXIS
 - First Character detected = A
 - ''
-- str->length = 3
+- Character not in list = X
 - ''
-- str->length = 2
-- ''
+- LECTURE
 - First Character detected = C
 - ''
-- str->length = 4
+- Character not in list = R
 - ''
-- str->length = 3
+- 321+432
+- First Character detected = 3
 - ''
-- str->length = 2
+- Character not in list = +
 - ''
