@@ -3,13 +3,17 @@
 
 typedef struct
 {
-	char *strings;
+	char *string;
 	int startindex;
 	int length;
-}Strings;
+}String;
 
-Strings *stringNew();
-void StringTrim(Strings *str, char StringChar[]);
-Strings *stringRemoveWordContaining (Strings *str , char *ContainSet);
-Strings *stringRemoveWordNotContaining (Strings *str , char *notContainSet);
+String *stringNew(char *charString);
+void stringTrimLeft(String *str);
+void stringTrimRight(String *str);
+void stringTrim(String *str);
+String *stringRemoveWordContaining (String *str , char *containSet);
+String *stringRemoveWordNotContaining (String *str , char *notContainSet);
+int StringCharAt(String *str ,  int relativePos);
+int StringRemoveChar(String *str);
 #endif // StringObject_H

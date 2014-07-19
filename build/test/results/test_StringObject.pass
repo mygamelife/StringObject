@@ -3,44 +3,229 @@
   :path: test
   :file: test_StringObject.c
 :successes:
-- :test: test_StringTrim_should_skip_spaces_in_left_sides_and_store_in_strStrings
-  :line: 13
+- :test: test_stringNewX_given_NEW_startindex_0_and_length_0
+  :line: 16
   :message: ''
-- :test: test_StringTrim_should_skip_spaces_in_right_sides_and_store_in_strStrings
-  :line: 21
+- :test: test_stringTrimLeft_should_skip_spaces_on_left_sides_0
+  :line: 28
   :message: ''
-- :test: test_StringTrim_should_skip_all_spaces_and_store_in_strStrings
-  :line: 29
+- :test: test_stringTrimLeft_should_skip_spaces_on_left_sides_1
+  :line: 40
   :message: ''
-- :test: test_StringRemoveWordContaining_MAXIS_should_remove_A
+- :test: test_stringTrimLeft_should_skip_spaces_on_left_sides_2
   :line: 52
   :message: ''
-- :test: test_StringRemoveWordContaining_LECTURE_should_remove_CTU
-  :line: 67
+- :test: test_stringTrimRight_should_skip_spaces_on_left_sides_0
+  :line: 64
   :message: ''
-- :test: test_StringRemoveWordContaining_321_plus_432_should_remove_321
-  :line: 82
+- :test: test_stringTrimRight_should_skip_spaces_on_left_sides_1
+  :line: 76
+  :message: ''
+- :test: test_stringTrimRight_should_skip_spaces_on_left_sides_2
+  :line: 88
+  :message: ''
+- :test: test_stringTrim_should_skip_spaces_on_left_and_right_sides_0
+  :line: 100
+  :message: ''
+- :test: test_stringTrim_should_skip_spaces_on_left_and_right_sides_1
+  :line: 112
+  :message: ''
+- :test: test_stringTrim_should_skip_spaces_on_left_and_right_sides_2
+  :line: 124
+  :message: ''
+- :test: test_stringRemoveWordContaining_given_HELLO_should_remove_L
+  :line: 136
+  :message: ''
+- :test: test_stringRemoveWordContaining_MAXIS_should_remove_A
+  :line: 154
+  :message: ''
+- :test: test_stringRemoveWordContaining_Beef_should_remove_f
+  :line: 173
+  :message: ''
+- :test: test_stringRemoveWordContaining_space_tab_21_plus_32_space_tab_should_remove_21
+  :line: 192
+  :message: ''
+- :test: test_stringRemoveWordContaining_tab_space_negative_10_plus_2_space_should_remove_10
+  :line: 212
+  :message: ''
+- :test: test_stringRemoveWordContaining_tab_AB_plus_CD_tab_should_remove_nothing
+  :line: 231
+  :message: ''
+- :test: test_stringRemoveWordNotContaining_comma_ABC_comma_should_remove_ABC
+  :line: 250
+  :message: ''
+- :test: test_stringRemoveWordNotContaining_Jel_apostrophe_ly_should_remove_Jel
+  :line: 269
+  :message: ''
+- :test: test_stringRemoveWordNotContaining_Lady_square_bracket_should_remove_square_bracket
+  :line: 288
+  :message: ''
+- :test: test_stringRemoveWordNotContaining_Oil_comma_should_remove_Oil_comma
+  :line: 307
   :message: ''
 :failures: []
 :ignores: []
 :counts:
-  :total: 6
-  :passed: 6
+  :total: 20
+  :passed: 20
   :failed: 0
   :ignored: 0
 :stdout:
-- MAXIS
-- First Character detected = A
+- notRemovedWord start index = 0
 - ''
-- Character not in list = X
+- notRemovedWord length = 0
 - ''
-- LECTURE
-- First Character detected = C
+- string start = 0
 - ''
-- Character not in list = R
+- string length = 4
 - ''
-- 321+432
-- First Character detected = 3
+- After remove
+- notRemovedWord start index = 0
 - ''
-- Character not in list = +
+- notRemovedWord length = 1
+- ''
+- string start = 1
+- ''
+- string length = 3
+- ''
+- notRemovedWord start index = 0
+- ''
+- notRemovedWord length = 0
+- ''
+- string start = 0
+- ''
+- string length = 6
+- ''
+- After remove
+- notRemovedWord start index = 0
+- ''
+- notRemovedWord length = 1
+- ''
+- string start = 1
+- ''
+- string length = 5
+- ''
+- After remove
+- notRemovedWord start index = 0
+- ''
+- notRemovedWord length = 2
+- ''
+- string start = 2
+- ''
+- string length = 4
+- ''
+- After remove
+- notRemovedWord start index = 0
+- ''
+- notRemovedWord length = 3
+- ''
+- string start = 3
+- ''
+- string length = 3
+- ''
+- notRemovedWord start index = 0
+- ''
+- notRemovedWord length = 0
+- ''
+- string start = 0
+- ''
+- string length = 6
+- ''
+- After remove
+- notRemovedWord start index = 0
+- ''
+- notRemovedWord length = 1
+- ''
+- string start = 1
+- ''
+- string length = 5
+- ''
+- After remove
+- notRemovedWord start index = 0
+- ''
+- notRemovedWord length = 2
+- ''
+- string start = 2
+- ''
+- string length = 4
+- ''
+- After remove
+- notRemovedWord start index = 0
+- ''
+- notRemovedWord length = 3
+- ''
+- string start = 3
+- ''
+- string length = 3
+- ''
+- After remove
+- notRemovedWord start index = 0
+- ''
+- notRemovedWord length = 4
+- ''
+- string start = 4
+- ''
+- string length = 2
+- ''
+- After remove
+- notRemovedWord start index = 0
+- ''
+- notRemovedWord length = 5
+- ''
+- string start = 5
+- ''
+- string length = 1
+- ''
+- After remove
+- notRemovedWord start index = 0
+- ''
+- notRemovedWord length = 6
+- ''
+- string start = 6
+- ''
+- string length = 0
+- ''
+- notRemovedWord start index = 0
+- ''
+- notRemovedWord length = 0
+- ''
+- string start = 0
+- ''
+- string length = 4
+- ''
+- After remove
+- notRemovedWord start index = 0
+- ''
+- notRemovedWord length = 1
+- ''
+- string start = 1
+- ''
+- string length = 3
+- ''
+- After remove
+- notRemovedWord start index = 0
+- ''
+- notRemovedWord length = 2
+- ''
+- string start = 2
+- ''
+- string length = 2
+- ''
+- After remove
+- notRemovedWord start index = 0
+- ''
+- notRemovedWord length = 3
+- ''
+- string start = 3
+- ''
+- string length = 1
+- ''
+- After remove
+- notRemovedWord start index = 0
+- ''
+- notRemovedWord length = 4
+- ''
+- string start = 4
+- ''
+- string length = 0
 - ''

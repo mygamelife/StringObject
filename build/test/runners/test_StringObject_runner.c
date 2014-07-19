@@ -34,12 +34,26 @@ char* GlobalOrderError;
 //=======External Functions This Runner Calls=====
 extern void setUp(void);
 extern void tearDown(void);
-extern void test_StringTrim_should_skip_spaces_in_left_sides_and_store_in_strStrings(void);
-extern void test_StringTrim_should_skip_spaces_in_right_sides_and_store_in_strStrings(void);
-extern void test_StringTrim_should_skip_all_spaces_and_store_in_strStrings(void);
-extern void test_StringRemoveWordContaining_MAXIS_should_remove_A(void);
-extern void test_StringRemoveWordContaining_LECTURE_should_remove_CTU(void);
-extern void test_StringRemoveWordContaining_321_plus_432_should_remove_321(void);
+extern void test_stringNewX_given_NEW_startindex_0_and_length_0(void);
+extern void test_stringTrimLeft_should_skip_spaces_on_left_sides_0(void);
+extern void test_stringTrimLeft_should_skip_spaces_on_left_sides_1(void);
+extern void test_stringTrimLeft_should_skip_spaces_on_left_sides_2(void);
+extern void test_stringTrimRight_should_skip_spaces_on_left_sides_0(void);
+extern void test_stringTrimRight_should_skip_spaces_on_left_sides_1(void);
+extern void test_stringTrimRight_should_skip_spaces_on_left_sides_2(void);
+extern void test_stringTrim_should_skip_spaces_on_left_and_right_sides_0(void);
+extern void test_stringTrim_should_skip_spaces_on_left_and_right_sides_1(void);
+extern void test_stringTrim_should_skip_spaces_on_left_and_right_sides_2(void);
+extern void test_stringRemoveWordContaining_given_HELLO_should_remove_L(void);
+extern void test_stringRemoveWordContaining_MAXIS_should_remove_A(void);
+extern void test_stringRemoveWordContaining_Beef_should_remove_f(void);
+extern void test_stringRemoveWordContaining_space_tab_21_plus_32_space_tab_should_remove_21(void);
+extern void test_stringRemoveWordContaining_tab_space_negative_10_plus_2_space_should_remove_10(void);
+extern void test_stringRemoveWordContaining_tab_AB_plus_CD_tab_should_remove_nothing(void);
+extern void test_stringRemoveWordNotContaining_comma_ABC_comma_should_remove_ABC(void);
+extern void test_stringRemoveWordNotContaining_Jel_apostrophe_ly_should_remove_Jel(void);
+extern void test_stringRemoveWordNotContaining_Lady_square_bracket_should_remove_square_bracket(void);
+extern void test_stringRemoveWordNotContaining_Oil_comma_should_remove_Oil_comma(void);
 
 
 //=======Test Reset Option=====
@@ -55,12 +69,26 @@ int main(void)
 {
   Unity.TestFile = "test_StringObject.c";
   UnityBegin();
-  RUN_TEST(test_StringTrim_should_skip_spaces_in_left_sides_and_store_in_strStrings, 13);
-  RUN_TEST(test_StringTrim_should_skip_spaces_in_right_sides_and_store_in_strStrings, 21);
-  RUN_TEST(test_StringTrim_should_skip_all_spaces_and_store_in_strStrings, 29);
-  RUN_TEST(test_StringRemoveWordContaining_MAXIS_should_remove_A, 52);
-  RUN_TEST(test_StringRemoveWordContaining_LECTURE_should_remove_CTU, 67);
-  RUN_TEST(test_StringRemoveWordContaining_321_plus_432_should_remove_321, 82);
+  RUN_TEST(test_stringNewX_given_NEW_startindex_0_and_length_0, 16);
+  RUN_TEST(test_stringTrimLeft_should_skip_spaces_on_left_sides_0, 28);
+  RUN_TEST(test_stringTrimLeft_should_skip_spaces_on_left_sides_1, 40);
+  RUN_TEST(test_stringTrimLeft_should_skip_spaces_on_left_sides_2, 52);
+  RUN_TEST(test_stringTrimRight_should_skip_spaces_on_left_sides_0, 64);
+  RUN_TEST(test_stringTrimRight_should_skip_spaces_on_left_sides_1, 76);
+  RUN_TEST(test_stringTrimRight_should_skip_spaces_on_left_sides_2, 88);
+  RUN_TEST(test_stringTrim_should_skip_spaces_on_left_and_right_sides_0, 100);
+  RUN_TEST(test_stringTrim_should_skip_spaces_on_left_and_right_sides_1, 112);
+  RUN_TEST(test_stringTrim_should_skip_spaces_on_left_and_right_sides_2, 124);
+  RUN_TEST(test_stringRemoveWordContaining_given_HELLO_should_remove_L, 136);
+  RUN_TEST(test_stringRemoveWordContaining_MAXIS_should_remove_A, 154);
+  RUN_TEST(test_stringRemoveWordContaining_Beef_should_remove_f, 173);
+  RUN_TEST(test_stringRemoveWordContaining_space_tab_21_plus_32_space_tab_should_remove_21, 192);
+  RUN_TEST(test_stringRemoveWordContaining_tab_space_negative_10_plus_2_space_should_remove_10, 212);
+  RUN_TEST(test_stringRemoveWordContaining_tab_AB_plus_CD_tab_should_remove_nothing, 231);
+  RUN_TEST(test_stringRemoveWordNotContaining_comma_ABC_comma_should_remove_ABC, 250);
+  RUN_TEST(test_stringRemoveWordNotContaining_Jel_apostrophe_ly_should_remove_Jel, 269);
+  RUN_TEST(test_stringRemoveWordNotContaining_Lady_square_bracket_should_remove_square_bracket, 288);
+  RUN_TEST(test_stringRemoveWordNotContaining_Oil_comma_should_remove_Oil_comma, 307);
 
   return (UnityEnd());
 }
