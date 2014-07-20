@@ -633,3 +633,365 @@ void test_stringRemoveWordNotContaining_Oil_comma_should_remove_Oil_comma(void)
  UnityAssertEqualNumber((_U_SINT)((0)), (_U_SINT)((str->length)), (((void *)0)), (_U_UINT)319, UNITY_DISPLAY_STYLE_INT);
 
 }
+
+
+
+
+
+
+
+
+
+
+
+void test_stringCharAt_given_Apple_and_relative_position_1_should_return_p(void)
+
+{
+
+ int charAtThisPosition;
+
+ String *str = stringNew("Apple");
+
+ charAtThisPosition = stringCharAt(str , 1);
+
+
+
+
+
+ UnityAssertEqualNumber((_U_SINT)((112)), (_U_SINT)((charAtThisPosition)), (((void *)0)), (_U_UINT)333, UNITY_DISPLAY_STYLE_INT);
+
+}
+
+
+
+
+
+
+
+
+
+
+
+void test_stringCharAt_given_Orange_and_relative_position_6_should_return_negative_1(void)
+
+{
+
+ int charAtThisPosition;
+
+ String *str = stringNew("Orange");
+
+ charAtThisPosition = stringCharAt(str , 6);
+
+
+
+
+
+ UnityAssertEqualNumber((_U_SINT)((-1)), (_U_SINT)((charAtThisPosition)), (((void *)0)), (_U_UINT)347, UNITY_DISPLAY_STYLE_INT);
+
+}
+
+
+
+
+
+
+
+
+
+
+
+void test_stringCharAt_given_2_plus_3_and_relative_position_negative_five_should_return_negative_1(void)
+
+{
+
+ int charAtThisPosition;
+
+ String *str = stringNew("2+3");
+
+ charAtThisPosition = stringCharAt(str , -5);
+
+
+
+
+
+ UnityAssertEqualNumber((_U_SINT)((-1)), (_U_SINT)((charAtThisPosition)), (((void *)0)), (_U_UINT)361, UNITY_DISPLAY_STYLE_INT);
+
+}
+
+
+
+
+
+
+
+
+
+void test_stringCharAt_given_Q_should_remove_Q(void)
+
+{
+
+ int removedChar;
+
+ String *str = stringNew("Q");
+
+ removedChar = stringRemoveChar(str);
+
+
+
+
+
+ UnityAssertEqualNumber((_U_SINT)((81)), (_U_SINT)((removedChar)), (((void *)0)), (_U_UINT)374, UNITY_DISPLAY_STYLE_INT);
+
+ UnityAssertEqualNumber((_U_SINT)((1)), (_U_SINT)((str->startindex)), (((void *)0)), (_U_UINT)375, UNITY_DISPLAY_STYLE_INT);
+
+ UnityAssertEqualNumber((_U_SINT)((0)), (_U_SINT)((str->length)), (((void *)0)), (_U_UINT)376, UNITY_DISPLAY_STYLE_INT);
+
+}
+
+
+
+
+
+
+
+
+
+void test_stringCharAt_given_Bone_should_remove_B(void)
+
+{
+
+ int removedChar;
+
+ String *str = stringNew("Bone");
+
+ removedChar = stringRemoveChar(str);
+
+
+
+
+
+ UnityAssertEqualNumber((_U_SINT)((66)), (_U_SINT)((removedChar)), (((void *)0)), (_U_UINT)389, UNITY_DISPLAY_STYLE_INT);
+
+ UnityAssertEqualNumber((_U_SINT)((1)), (_U_SINT)((str->startindex)), (((void *)0)), (_U_UINT)390, UNITY_DISPLAY_STYLE_INT);
+
+ UnityAssertEqualNumber((_U_SINT)((3)), (_U_SINT)((str->length)), (((void *)0)), (_U_UINT)391, UNITY_DISPLAY_STYLE_INT);
+
+}
+
+
+
+
+
+
+
+
+
+void test_stringCharAt_given_Pig_and_removex2_should_remove_i(void)
+
+{
+
+ int removedChar;
+
+ String *str = stringNew("Pig");
+
+ removedChar = stringRemoveChar(str);
+
+ removedChar = stringRemoveChar(str);
+
+
+
+
+
+ UnityAssertEqualNumber((_U_SINT)((105)), (_U_SINT)((removedChar)), (((void *)0)), (_U_UINT)405, UNITY_DISPLAY_STYLE_INT);
+
+ UnityAssertEqualNumber((_U_SINT)((2)), (_U_SINT)((str->startindex)), (((void *)0)), (_U_UINT)406, UNITY_DISPLAY_STYLE_INT);
+
+ UnityAssertEqualNumber((_U_SINT)((1)), (_U_SINT)((str->length)), (((void *)0)), (_U_UINT)407, UNITY_DISPLAY_STYLE_INT);
+
+}
+
+
+
+
+
+
+
+
+
+
+
+void test_stringSkip_given_TED_and_skip_1_char_should_skip_T(void)
+
+{
+
+ String *str = stringNew("TED");
+
+ stringSkip(str , 1);
+
+
+
+ UnityAssertEqualNumber((_U_SINT)((1)), (_U_SINT)((str->startindex)), (((void *)0)), (_U_UINT)419, UNITY_DISPLAY_STYLE_INT);
+
+ UnityAssertEqualNumber((_U_SINT)((3)), (_U_SINT)((str->length)), (((void *)0)), (_U_UINT)420, UNITY_DISPLAY_STYLE_INT);
+
+}
+
+
+
+
+
+
+
+
+
+
+
+void test_stringSkip_given_Angel_and_skip_5_char_should_skip_all_character(void)
+
+{
+
+ String *str = stringNew("Angel");
+
+ stringSkip(str , 5);
+
+
+
+ UnityAssertEqualNumber((_U_SINT)((0)), (_U_SINT)((str->string[str->startindex])), (((void *)0)), (_U_UINT)432, UNITY_DISPLAY_STYLE_INT);
+
+ UnityAssertEqualNumber((_U_SINT)((5)), (_U_SINT)((str->startindex)), (((void *)0)), (_U_UINT)433, UNITY_DISPLAY_STYLE_INT);
+
+ UnityAssertEqualNumber((_U_SINT)((5)), (_U_SINT)((str->length)), (((void *)0)), (_U_UINT)434, UNITY_DISPLAY_STYLE_INT);
+
+}
+
+
+
+
+
+
+
+
+
+
+
+void test_stringSkip_given_Monalisa_and_skip_negative_two_char_should_skip_nothing(void)
+
+{
+
+ String *str = stringNew("Monalisa");
+
+ stringSkip(str , -2);
+
+
+
+ UnityAssertEqualNumber((_U_SINT)((0)), (_U_SINT)((str->startindex)), (((void *)0)), (_U_UINT)446, UNITY_DISPLAY_STYLE_INT);
+
+ UnityAssertEqualNumber((_U_SINT)((8)), (_U_SINT)((str->length)), (((void *)0)), (_U_UINT)447, UNITY_DISPLAY_STYLE_INT);
+
+}
+
+
+
+
+
+
+
+
+
+
+
+void test_stringSkip_given_Miracle_and_skip_10_char_should_skip_all_character_and_stop_at_position_7(void)
+
+{
+
+ String *str = stringNew("Miracle");
+
+ stringSkip(str , 10);
+
+
+
+ UnityAssertEqualNumber((_U_SINT)((0)), (_U_SINT)((str->string[str->startindex])), (((void *)0)), (_U_UINT)459, UNITY_DISPLAY_STYLE_INT);
+
+ UnityAssertEqualNumber((_U_SINT)((7)), (_U_SINT)((str->startindex)), (((void *)0)), (_U_UINT)460, UNITY_DISPLAY_STYLE_INT);
+
+ UnityAssertEqualNumber((_U_SINT)((7)), (_U_SINT)((str->length)), (((void *)0)), (_U_UINT)461, UNITY_DISPLAY_STYLE_INT);
+
+}
+
+
+
+
+
+
+
+
+
+void test_stringSubStringInChars_given_82_plus_29_and_length_is_2_should_return_82(void)
+
+{
+
+ char *subString;
+
+ String *str = stringNew("82+29");
+
+ subString = stringSubStringInChars(str , 2);
+
+
+
+ UnityAssertEqualString((const char*)("82"), (const char*)(subString), (((void *)0)), (_U_UINT)473);
+
+}
+
+
+
+
+
+
+
+
+
+void test_stringSubStringInChars_given_negative_234_times_1_and_length_is_5_should_return_negative_234_space(void)
+
+{
+
+ char *subString;
+
+ String *str = stringNew("-234 * 1");
+
+ subString = stringSubStringInChars(str , 5);
+
+
+
+ UnityAssertEqualString((const char*)("-234 "), (const char*)(subString), (((void *)0)), (_U_UINT)485);
+
+}
+
+
+
+
+
+
+
+
+
+void test_subStringToInteger_given_149_minus_20_should_return_149_in_integer(void)
+
+{
+
+ char *subString;
+
+ int integer;
+
+ String *str = stringNew("149-20");
+
+ subString = stringSubStringInChars(str , 3);
+
+ integer = subStringToInteger(str , subString);
+
+
+
+ UnityAssertEqualString((const char*)("149"), (const char*)(subString), (((void *)0)), (_U_UINT)499);
+
+ UnityAssertEqualNumber((_U_SINT)((149)), (_U_SINT)((integer)), (((void *)0)), (_U_UINT)500, UNITY_DISPLAY_STYLE_INT);
+
+}

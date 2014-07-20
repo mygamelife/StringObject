@@ -63,169 +63,56 @@
 - :test: test_stringRemoveWordNotContaining_Oil_comma_should_remove_Oil_comma
   :line: 307
   :message: ''
+- :test: test_stringCharAt_given_Apple_and_relative_position_1_should_return_p
+  :line: 326
+  :message: ''
+- :test: test_stringCharAt_given_Orange_and_relative_position_6_should_return_negative_1
+  :line: 340
+  :message: ''
+- :test: test_stringCharAt_given_2_plus_3_and_relative_position_negative_five_should_return_negative_1
+  :line: 354
+  :message: ''
+- :test: test_stringCharAt_given_Q_should_remove_Q
+  :line: 367
+  :message: ''
+- :test: test_stringCharAt_given_Bone_should_remove_B
+  :line: 382
+  :message: ''
+- :test: test_stringCharAt_given_Pig_and_removex2_should_remove_i
+  :line: 397
+  :message: ''
+- :test: test_stringSkip_given_TED_and_skip_1_char_should_skip_T
+  :line: 414
+  :message: ''
+- :test: test_stringSkip_given_Angel_and_skip_5_char_should_skip_all_character
+  :line: 427
+  :message: ''
+- :test: test_stringSkip_given_Monalisa_and_skip_negative_two_char_should_skip_nothing
+  :line: 441
+  :message: ''
+- :test: test_stringSkip_given_Miracle_and_skip_10_char_should_skip_all_character_and_stop_at_position_7
+  :line: 454
+  :message: ''
+- :test: test_stringSubStringInChars_given_82_plus_29_and_length_is_2_should_return_82
+  :line: 467
+  :message: ''
+- :test: test_stringSubStringInChars_given_negative_234_times_1_and_length_is_5_should_return_negative_234_space
+  :line: 479
+  :message: ''
+- :test: test_subStringToInteger_given_149_minus_20_should_return_149_in_integer
+  :line: 491
+  :message: ''
 :failures: []
 :ignores: []
 :counts:
-  :total: 20
-  :passed: 20
+  :total: 33
+  :passed: 33
   :failed: 0
   :ignored: 0
 :stdout:
-- notRemovedWord start index = 0
+- charStr = 82
 - ''
-- notRemovedWord length = 0
+- 'charStr = -234 '
 - ''
-- string start = 0
-- ''
-- string length = 4
-- ''
-- After remove
-- notRemovedWord start index = 0
-- ''
-- notRemovedWord length = 1
-- ''
-- string start = 1
-- ''
-- string length = 3
-- ''
-- notRemovedWord start index = 0
-- ''
-- notRemovedWord length = 0
-- ''
-- string start = 0
-- ''
-- string length = 6
-- ''
-- After remove
-- notRemovedWord start index = 0
-- ''
-- notRemovedWord length = 1
-- ''
-- string start = 1
-- ''
-- string length = 5
-- ''
-- After remove
-- notRemovedWord start index = 0
-- ''
-- notRemovedWord length = 2
-- ''
-- string start = 2
-- ''
-- string length = 4
-- ''
-- After remove
-- notRemovedWord start index = 0
-- ''
-- notRemovedWord length = 3
-- ''
-- string start = 3
-- ''
-- string length = 3
-- ''
-- notRemovedWord start index = 0
-- ''
-- notRemovedWord length = 0
-- ''
-- string start = 0
-- ''
-- string length = 6
-- ''
-- After remove
-- notRemovedWord start index = 0
-- ''
-- notRemovedWord length = 1
-- ''
-- string start = 1
-- ''
-- string length = 5
-- ''
-- After remove
-- notRemovedWord start index = 0
-- ''
-- notRemovedWord length = 2
-- ''
-- string start = 2
-- ''
-- string length = 4
-- ''
-- After remove
-- notRemovedWord start index = 0
-- ''
-- notRemovedWord length = 3
-- ''
-- string start = 3
-- ''
-- string length = 3
-- ''
-- After remove
-- notRemovedWord start index = 0
-- ''
-- notRemovedWord length = 4
-- ''
-- string start = 4
-- ''
-- string length = 2
-- ''
-- After remove
-- notRemovedWord start index = 0
-- ''
-- notRemovedWord length = 5
-- ''
-- string start = 5
-- ''
-- string length = 1
-- ''
-- After remove
-- notRemovedWord start index = 0
-- ''
-- notRemovedWord length = 6
-- ''
-- string start = 6
-- ''
-- string length = 0
-- ''
-- notRemovedWord start index = 0
-- ''
-- notRemovedWord length = 0
-- ''
-- string start = 0
-- ''
-- string length = 4
-- ''
-- After remove
-- notRemovedWord start index = 0
-- ''
-- notRemovedWord length = 1
-- ''
-- string start = 1
-- ''
-- string length = 3
-- ''
-- After remove
-- notRemovedWord start index = 0
-- ''
-- notRemovedWord length = 2
-- ''
-- string start = 2
-- ''
-- string length = 2
-- ''
-- After remove
-- notRemovedWord start index = 0
-- ''
-- notRemovedWord length = 3
-- ''
-- string start = 3
-- ''
-- string length = 1
-- ''
-- After remove
-- notRemovedWord start index = 0
-- ''
-- notRemovedWord length = 4
-- ''
-- string start = 4
-- ''
-- string length = 0
+- charStr = 149
 - ''

@@ -14,6 +14,9 @@ void stringTrimRight(String *str);
 void stringTrim(String *str);
 String *stringRemoveWordContaining (String *str , char *containSet);
 String *stringRemoveWordNotContaining (String *str , char *notContainSet);
-int StringCharAt(String *str ,  int relativePos);
-int StringRemoveChar(String *str);
+int stringCharAt(String *str ,  int relativePos);
+int stringRemoveChar(String *str);
+void stringSkip(String *str , int numOfCharToSkip);
+char *stringSubStringInChars(String *str , int length);
+int subStringToInteger(String *str , char *subString);
 #endif // StringObject_H

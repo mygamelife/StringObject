@@ -1,5 +1,6 @@
 #include "StringObject.h"
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 #include <malloc.h>
 
@@ -135,11 +136,6 @@ String *stringRemoveWordNotContaining(String *str , char *notContainSet)
 	String *notRemovedWord = stringNew(str->string); //create new String for notRemovedWord
 	notRemovedWord->length = 0; 
 	
-	printf("notRemovedWord start index = %d\n\n" , notRemovedWord->startindex);
-	printf("notRemovedWord length = %d\n\n" , notRemovedWord->length);
-	printf("string start = %d\n\n" , str->startindex);
-	printf("string length = %d\n\n" , str->length);
-	
 	while(i < strlen(str->string))
 	{
 		while(j != strlen(notContainSet))
@@ -159,12 +155,6 @@ String *stringRemoveWordNotContaining(String *str , char *notContainSet)
 				str->length--; //decrement once after one word removed
 				notInSet = 0;
 				
-				printf("After remove\n");
-				printf("notRemovedWord start index = %d\n\n" , notRemovedWord->startindex);
-				printf("notRemovedWord length = %d\n\n" , notRemovedWord->length);	
-				printf("string start = %d\n\n" , str->startindex);
-				printf("string length = %d\n\n" , str->length);
-				
 				goto jump;
 			}
 			
@@ -183,4 +173,86 @@ jump:
 
 end:
 	return notRemovedWord;
+}
+
+/* Find the character according to the relative position
+ * input :
+ *			relativePos the position of string
+ * return :
+ *			if relative position is valid in this string return the relative position character
+ *			else return negative 1
+*/
+int stringCharAt(String *str ,  int relativePos)
+{
+	if((relativePos < 0 ) || relativePos > (strlen(str->string) - 1))
+		return -1;	
+
+	return str->string[relativePos];
+}
+
+/* Remove one character and move start index to next position
+ * input :
+ *			*str is the pointer pointing the string that need to be remove
+ * return :
+ *			return the removed character from the string
+*/
+int stringRemoveChar(String *str)
+{
+	char removedChar;
+
+	//start index move to next position after one char removed
+	removedChar = str->string[str->startindex++];
+	str->length--;
+
+	return removedChar;
+}
+
+/* Skip number of character in string
+ * input :
+ *			numOfCharToSkip number of character wanted to be skip
+ * output :
+ *			str->startindex point to character after skip
+ */
+void stringSkip(String *str , int numOfCharToSkip)
+{
+	if(numOfCharToSkip < 0)
+		str->startindex = 0;
+		
+	else if((str->length - 1) > numOfCharToSkip)
+		str->startindex = numOfCharToSkip;
+	
+	else
+		str->startindex = str->length;
+}
+
+/* Remove SubString inside the character according to the length
+ * input :
+ *			length is the substring length to know how many character should remove as a substring
+ * return :
+ *			store the removed substring in charStr and return
+ */
+char *stringSubStringInChars(String *str , int length)
+{
+	int i = 0;
+	char *charStr = malloc(sizeof(char) * length + 1);
+	
+	for(i ; i < length ; i++)
+	{
+		charStr[i] = str->string[i];
+		charStr[i+1] = 0;
+	}	
+	
+	printf("charStr = %s\n\n" , charStr);
+	return charStr;
+}
+
+/*
+ */
+int subStringToInteger(String *str , char *subString)
+{
+	int integer;
+	
+	integer = atoi(subString);
+	
+	return integer;
 }

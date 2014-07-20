@@ -318,3 +318,184 @@ void test_stringRemoveWordNotContaining_Oil_comma_should_remove_Oil_comma(void)
 	TEST_ASSERT_EQUAL(4 , str->startindex);
 	TEST_ASSERT_EQUAL(0 , str->length);
 }
+
+/*#21
+ * Given string "Apple" and relativePos 1
+ * Should return the relative position character "p"
+ */
+void test_stringCharAt_given_Apple_and_relative_position_1_should_return_p(void)
+{
+	int charAtThisPosition;
+	String *str = stringNew("Apple");
+	charAtThisPosition = stringCharAt(str , 1);
+	
+	/* p = 112 in ASCII table */
+	TEST_ASSERT_EQUAL(112 , charAtThisPosition);
+}
+
+/*#22
+ * Given string "Orange" and relativePos 6
+ * Should return -1
+ */
+void test_stringCharAt_given_Orange_and_relative_position_6_should_return_negative_1(void)
+{
+	int charAtThisPosition;
+	String *str = stringNew("Orange");
+	charAtThisPosition = stringCharAt(str , 6);
+	
+	/* position 6 is beyond the position "e" */
+	TEST_ASSERT_EQUAL(-1 , charAtThisPosition);
+}
+
+/*#23
+ * Given string "2+3" and relativePos -5
+ * Should return -1
+ */
+void test_stringCharAt_given_2_plus_3_and_relative_position_negative_five_should_return_negative_1(void)
+{
+	int charAtThisPosition;
+	String *str = stringNew("2+3");
+	charAtThisPosition = stringCharAt(str , -5);
+	
+	/* -5 is not a valid position inside the string */
+	TEST_ASSERT_EQUAL(-1 , charAtThisPosition);
+}
+
+/*#24
+ * Given string "Q" and should remove only one character "Q" and startindex 1 and length is 0
+ */
+void test_stringCharAt_given_Q_should_remove_Q(void)
+{
+	int removedChar;
+	String *str = stringNew("Q");
+	removedChar = stringRemoveChar(str);
+	
+	/* Q = 81 in ASCII table */
+	TEST_ASSERT_EQUAL(81 , removedChar);
+	TEST_ASSERT_EQUAL(1 , str->startindex);
+	TEST_ASSERT_EQUAL(0 , str->length);
+}
+
+/*#25
+ * Given string "Bone" and should remove character "B" and startindex 1 and length is 3
+ */
+void test_stringCharAt_given_Bone_should_remove_B(void)
+{
+	int removedChar;
+	String *str = stringNew("Bone");
+	removedChar = stringRemoveChar(str);
+	
+	/* B = 66 in ASCII table */
+	TEST_ASSERT_EQUAL(66 , removedChar);
+	TEST_ASSERT_EQUAL(1 , str->startindex);
+	TEST_ASSERT_EQUAL(3 , str->length);
+}
+
+/*#26
+ * Given string "Pig" remove 2 times startindex = 2 & length = 1
+ */
+void test_stringCharAt_given_Pig_and_removex2_should_remove_i(void)
+{
+	int removedChar;
+	String *str = stringNew("Pig");
+	removedChar = stringRemoveChar(str);
+	removedChar = stringRemoveChar(str);
+	
+	/* i = 105 in ASCII table */
+	TEST_ASSERT_EQUAL(105 , removedChar);
+	TEST_ASSERT_EQUAL(2 , str->startindex);
+	TEST_ASSERT_EQUAL(1 , str->length);
+}
+
+/*#27
+ * Given string "TED" and number of character to skip is 1 
+ * Should skip "T" and remain "ED"
+ */
+void test_stringSkip_given_TED_and_skip_1_char_should_skip_T(void)
+{
+	String *str = stringNew("TED");
+	stringSkip(str , 1);
+	
+	TEST_ASSERT_EQUAL(1 , str->startindex);
+	TEST_ASSERT_EQUAL(3 , str->length);
+}
+
+/*#28
+ * Given string "Angel" and number of character to skip is 5 
+ * Should skip "Angel" and remain nothing
+ */
+void test_stringSkip_given_Angel_and_skip_5_char_should_skip_all_character(void)
+{
+	String *str = stringNew("Angel");
+	stringSkip(str , 5);
+	
+	TEST_ASSERT_EQUAL(0 , str->string[str->startindex]);
+	TEST_ASSERT_EQUAL(5 , str->startindex);
+	TEST_ASSERT_EQUAL(5 , str->length);
+}
+
+/*#29
+ * Given string "Monalisa" and number of character to skip is -2 
+ * Should skip nothing
+ */
+void test_stringSkip_given_Monalisa_and_skip_negative_two_char_should_skip_nothing(void)
+{
+	String *str = stringNew("Monalisa");
+	stringSkip(str , -2);
+	
+	TEST_ASSERT_EQUAL(0 , str->startindex);
+	TEST_ASSERT_EQUAL(8 , str->length);
+}
+
+/*#30
+ * Given string "Miracle" and number of character to skip is 10 
+ * Should skip all character and startindex pointing at 5
+ */
+void test_stringSkip_given_Miracle_and_skip_10_char_should_skip_all_character_and_stop_at_position_7(void)
+{
+	String *str = stringNew("Miracle");
+	stringSkip(str , 10);
+	
+	TEST_ASSERT_EQUAL(0 , str->string[str->startindex]);
+	TEST_ASSERT_EQUAL(7 , str->startindex);
+	TEST_ASSERT_EQUAL(7 , str->length);
+}
+
+/*#31
+ * Given "82+29" and length is 2 should remove "82" as a substring
+ */
+void test_stringSubStringInChars_given_82_plus_29_and_length_is_2_should_return_82(void)
+{
+	char *subString;
+	String *str = stringNew("82+29");
+	subString = stringSubStringInChars(str , 2);
+	
+	TEST_ASSERT_EQUAL_STRING("82" , subString);
+}
+
+/*#32
+ * Given "-234 * 1" and length is 2 should remove "-234 " as a substring
+ */
+void test_stringSubStringInChars_given_negative_234_times_1_and_length_is_5_should_return_negative_234_space(void)
+{
+	char *subString;
+	String *str = stringNew("-234 * 1");
+	subString = stringSubStringInChars(str , 5);
+	
+	TEST_ASSERT_EQUAL_STRING("-234 " , subString);
+}
+
+/*#33
+ * Given "149-20" should return 149 as a integer
+ */
+void test_subStringToInteger_given_149_minus_20_should_return_149_in_integer(void)
+{
+	char *subString;
+	int integer;
+	String *str = stringNew("149-20");
+	subString = stringSubStringInChars(str , 3);
+	integer = subStringToInteger(str , subString);
+	
+	TEST_ASSERT_EQUAL_STRING("149" , subString);
+	TEST_ASSERT_EQUAL(149 , integer);
+}
