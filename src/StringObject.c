@@ -61,7 +61,7 @@ void stringTrimRight(String *str)
  * input :
  *		string
  * output:
- *		string after remove all spaces at left and right side
+ *		string after remove all spaces on left and right side
  */
 void stringTrim(String *str)
 {
@@ -74,7 +74,7 @@ void stringTrim(String *str)
  *		ContainSet character that need to be remove
  * return:
  *		Return the removedWord start index and length
-*/
+ */
 String *stringRemoveWordContaining(String *str , char *containSet)
 {
 	int i = str->startindex , j = 0 , firstFound = 0 , notInSet = 0;
@@ -128,7 +128,7 @@ end:
  *		notContainSet is character that don't need to be remove
  * return:
  *		Return the notRemovedWord start index and length
-*/
+ */
 String *stringRemoveWordNotContaining(String *str , char *notContainSet)
 {
 	int i = str->startindex , j = 0 , firstFound = 0 , notInSet = 0;
@@ -181,7 +181,7 @@ end:
  * return :
  *			if relative position is valid in this string return the relative position character
  *			else return negative 1
-*/
+ */
 int stringCharAt(String *str ,  int relativePos)
 {
 	if((relativePos < 0 ) || relativePos > (strlen(str->string) - 1))
@@ -195,7 +195,7 @@ int stringCharAt(String *str ,  int relativePos)
  *			*str is the pointer pointing the string that need to be remove
  * return :
  *			return the removed character from the string
-*/
+ */
 int stringRemoveChar(String *str)
 {
 	char removedChar;
@@ -218,11 +218,17 @@ void stringSkip(String *str , int numOfCharToSkip)
 	if(numOfCharToSkip < 0)
 		str->startindex = 0;
 		
-	else if((str->length - 1) > numOfCharToSkip)
+	else if((str->length - 1) >= numOfCharToSkip)
+	{
 		str->startindex = numOfCharToSkip;
+		str->length = str->length - numOfCharToSkip;
+	}
 	
 	else
+	{
 		str->startindex = str->length;
+		str->length = 0;
+	}
 }
 
 /* Remove SubString inside the character according to the length
@@ -234,25 +240,28 @@ void stringSkip(String *str , int numOfCharToSkip)
 char *stringSubStringInChars(String *str , int length)
 {
 	int i = 0;
-	char *charStr = malloc(sizeof(char) * length + 1);
+	char *charStr = malloc(sizeof(char) * length + 1); //malloc charStr in order to return
 	
 	for(i ; i < length ; i++)
 	{
-		charStr[i] = str->string[i];
-		charStr[i+1] = 0;
+		charStr[i] = str->string[str->startindex++];
+		charStr[i+1] = 0; //Create delimiter "\0" for the string
 	}	
 	
-	printf("charStr = %s\n\n" , charStr);
 	return charStr;
 }
 
-/*
+/* Convert substring into integer
+ * input :
+ *			subString get it from function stringSubStringInChars
+ * return :
+ *			return subString in integer form
  */
-int subStringToInteger(String *str , char *subString)
+int subStringToInteger(char *subString)
 {
 	int integer;
 	
-	integer = atoi(subString);
+	integer = atoi(subString); //atoi ASCII to integer
 	
 	return integer;
 }

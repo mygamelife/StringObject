@@ -18,5 +18,5 @@ int stringCharAt(String *str ,  int relativePos);
 int stringRemoveChar(String *str);
 void stringSkip(String *str , int numOfCharToSkip);
 char *stringSubStringInChars(String *str , int length);
-int subStringToInteger(String *str , char *subString);
+int subStringToInteger(char *subString);
 #endif // StringObject_H

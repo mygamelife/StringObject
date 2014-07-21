@@ -61,12 +61,16 @@ extern void test_stringCharAt_given_Q_should_remove_Q(void);
 extern void test_stringCharAt_given_Bone_should_remove_B(void);
 extern void test_stringCharAt_given_Pig_and_removex2_should_remove_i(void);
 extern void test_stringSkip_given_TED_and_skip_1_char_should_skip_T(void);
+extern void test_stringSkip_given_Error_and_skip_4_char_should_skip_Erro(void);
 extern void test_stringSkip_given_Angel_and_skip_5_char_should_skip_all_character(void);
 extern void test_stringSkip_given_Monalisa_and_skip_negative_two_char_should_skip_nothing(void);
 extern void test_stringSkip_given_Miracle_and_skip_10_char_should_skip_all_character_and_stop_at_position_7(void);
 extern void test_stringSubStringInChars_given_82_plus_29_and_length_is_2_should_return_82(void);
 extern void test_stringSubStringInChars_given_negative_234_times_1_and_length_is_5_should_return_negative_234_space(void);
-extern void test_subStringToInteger_given_149_minus_20_should_return_149_in_integer(void);
+extern void test_stringSubStringInChars_given_20_divide_5_skip_3_chars_and_length_is_1_should_return_5(void);
+extern void test_stringSubStringInChars_given_12_plus_34_times_67_skip_4_chars_and_length_is_4_should_return_9_times_67(void);
+extern void test_subStringToInteger_given_149_should_return_149_in_integer(void);
+extern void test_subStringToInteger_given_negative_50_should_return_negative_50_in_integer(void);
 
 
 //=======Test Reset Option=====
@@ -109,12 +113,16 @@ int main(void)
   RUN_TEST(test_stringCharAt_given_Bone_should_remove_B, 382);
   RUN_TEST(test_stringCharAt_given_Pig_and_removex2_should_remove_i, 397);
   RUN_TEST(test_stringSkip_given_TED_and_skip_1_char_should_skip_T, 414);
-  RUN_TEST(test_stringSkip_given_Angel_and_skip_5_char_should_skip_all_character, 427);
-  RUN_TEST(test_stringSkip_given_Monalisa_and_skip_negative_two_char_should_skip_nothing, 441);
-  RUN_TEST(test_stringSkip_given_Miracle_and_skip_10_char_should_skip_all_character_and_stop_at_position_7, 454);
-  RUN_TEST(test_stringSubStringInChars_given_82_plus_29_and_length_is_2_should_return_82, 467);
-  RUN_TEST(test_stringSubStringInChars_given_negative_234_times_1_and_length_is_5_should_return_negative_234_space, 479);
-  RUN_TEST(test_subStringToInteger_given_149_minus_20_should_return_149_in_integer, 491);
+  RUN_TEST(test_stringSkip_given_Error_and_skip_4_char_should_skip_Erro, 427);
+  RUN_TEST(test_stringSkip_given_Angel_and_skip_5_char_should_skip_all_character, 440);
+  RUN_TEST(test_stringSkip_given_Monalisa_and_skip_negative_two_char_should_skip_nothing, 454);
+  RUN_TEST(test_stringSkip_given_Miracle_and_skip_10_char_should_skip_all_character_and_stop_at_position_7, 467);
+  RUN_TEST(test_stringSubStringInChars_given_82_plus_29_and_length_is_2_should_return_82, 480);
+  RUN_TEST(test_stringSubStringInChars_given_negative_234_times_1_and_length_is_5_should_return_negative_234_space, 492);
+  RUN_TEST(test_stringSubStringInChars_given_20_divide_5_skip_3_chars_and_length_is_1_should_return_5, 504);
+  RUN_TEST(test_stringSubStringInChars_given_12_plus_34_times_67_skip_4_chars_and_length_is_4_should_return_9_times_67, 517);
+  RUN_TEST(test_subStringToInteger_given_149_should_return_149_in_integer, 530);
+  RUN_TEST(test_subStringToInteger_given_negative_50_should_return_negative_50_in_integer, 541);
 
   return (UnityEnd());
 }

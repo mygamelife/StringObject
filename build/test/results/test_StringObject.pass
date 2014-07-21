@@ -84,35 +84,41 @@
 - :test: test_stringSkip_given_TED_and_skip_1_char_should_skip_T
   :line: 414
   :message: ''
-- :test: test_stringSkip_given_Angel_and_skip_5_char_should_skip_all_character
+- :test: test_stringSkip_given_Error_and_skip_4_char_should_skip_Erro
   :line: 427
   :message: ''
-- :test: test_stringSkip_given_Monalisa_and_skip_negative_two_char_should_skip_nothing
-  :line: 441
+- :test: test_stringSkip_given_Angel_and_skip_5_char_should_skip_all_character
+  :line: 440
   :message: ''
-- :test: test_stringSkip_given_Miracle_and_skip_10_char_should_skip_all_character_and_stop_at_position_7
+- :test: test_stringSkip_given_Monalisa_and_skip_negative_two_char_should_skip_nothing
   :line: 454
   :message: ''
-- :test: test_stringSubStringInChars_given_82_plus_29_and_length_is_2_should_return_82
+- :test: test_stringSkip_given_Miracle_and_skip_10_char_should_skip_all_character_and_stop_at_position_7
   :line: 467
   :message: ''
-- :test: test_stringSubStringInChars_given_negative_234_times_1_and_length_is_5_should_return_negative_234_space
-  :line: 479
+- :test: test_stringSubStringInChars_given_82_plus_29_and_length_is_2_should_return_82
+  :line: 480
   :message: ''
-- :test: test_subStringToInteger_given_149_minus_20_should_return_149_in_integer
-  :line: 491
+- :test: test_stringSubStringInChars_given_negative_234_times_1_and_length_is_5_should_return_negative_234_space
+  :line: 492
+  :message: ''
+- :test: test_stringSubStringInChars_given_20_divide_5_skip_3_chars_and_length_is_1_should_return_5
+  :line: 504
+  :message: ''
+- :test: test_stringSubStringInChars_given_12_plus_34_times_67_skip_4_chars_and_length_is_4_should_return_9_times_67
+  :line: 517
+  :message: ''
+- :test: test_subStringToInteger_given_149_should_return_149_in_integer
+  :line: 530
+  :message: ''
+- :test: test_subStringToInteger_given_negative_50_should_return_negative_50_in_integer
+  :line: 541
   :message: ''
 :failures: []
 :ignores: []
 :counts:
-  :total: 33
-  :passed: 33
+  :total: 37
+  :passed: 37
   :failed: 0
   :ignored: 0
-:stdout:
-- charStr = 82
-- ''
-- 'charStr = -234 '
-- ''
-- charStr = 149
-- ''
+:stdout: []

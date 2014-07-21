@@ -417,10 +417,23 @@ void test_stringSkip_given_TED_and_skip_1_char_should_skip_T(void)
 	stringSkip(str , 1);
 	
 	TEST_ASSERT_EQUAL(1 , str->startindex);
-	TEST_ASSERT_EQUAL(3 , str->length);
+	TEST_ASSERT_EQUAL(2 , str->length);
 }
 
 /*#28
+ * Given string "Error" and number of character to skip is 4 
+ * Should skip "Erro" and remain "r"
+ */
+void test_stringSkip_given_Error_and_skip_4_char_should_skip_Erro(void)
+{
+	String *str = stringNew("Error");
+	stringSkip(str , 4);
+	
+	TEST_ASSERT_EQUAL(4 , str->startindex);
+	TEST_ASSERT_EQUAL(1 , str->length);
+}
+
+/*#29
  * Given string "Angel" and number of character to skip is 5 
  * Should skip "Angel" and remain nothing
  */
@@ -431,10 +444,10 @@ void test_stringSkip_given_Angel_and_skip_5_char_should_skip_all_character(void)
 	
 	TEST_ASSERT_EQUAL(0 , str->string[str->startindex]);
 	TEST_ASSERT_EQUAL(5 , str->startindex);
-	TEST_ASSERT_EQUAL(5 , str->length);
+	TEST_ASSERT_EQUAL(0 , str->length);
 }
 
-/*#29
+/*#30
  * Given string "Monalisa" and number of character to skip is -2 
  * Should skip nothing
  */
@@ -447,7 +460,7 @@ void test_stringSkip_given_Monalisa_and_skip_negative_two_char_should_skip_nothi
 	TEST_ASSERT_EQUAL(8 , str->length);
 }
 
-/*#30
+/*#31
  * Given string "Miracle" and number of character to skip is 10 
  * Should skip all character and startindex pointing at 5
  */
@@ -458,10 +471,10 @@ void test_stringSkip_given_Miracle_and_skip_10_char_should_skip_all_character_an
 	
 	TEST_ASSERT_EQUAL(0 , str->string[str->startindex]);
 	TEST_ASSERT_EQUAL(7 , str->startindex);
-	TEST_ASSERT_EQUAL(7 , str->length);
+	TEST_ASSERT_EQUAL(0 , str->length);
 }
 
-/*#31
+/*#32
  * Given "82+29" and length is 2 should remove "82" as a substring
  */
 void test_stringSubStringInChars_given_82_plus_29_and_length_is_2_should_return_82(void)
@@ -473,7 +486,7 @@ void test_stringSubStringInChars_given_82_plus_29_and_length_is_2_should_return_
 	TEST_ASSERT_EQUAL_STRING("82" , subString);
 }
 
-/*#32
+/*#33
  * Given "-234 * 1" and length is 2 should remove "-234 " as a substring
  */
 void test_stringSubStringInChars_given_negative_234_times_1_and_length_is_5_should_return_negative_234_space(void)
@@ -485,17 +498,50 @@ void test_stringSubStringInChars_given_negative_234_times_1_and_length_is_5_shou
 	TEST_ASSERT_EQUAL_STRING("-234 " , subString);
 }
 
-/*#33
- * Given "149-20" should return 149 as a integer
+/*#34
+ * Given "20/5" skip 3 characters and take the remaining character "5" as substring
  */
-void test_subStringToInteger_given_149_minus_20_should_return_149_in_integer(void)
+void test_stringSubStringInChars_given_20_divide_5_skip_3_chars_and_length_is_1_should_return_5(void)
 {
 	char *subString;
-	int integer;
-	String *str = stringNew("149-20");
-	subString = stringSubStringInChars(str , 3);
-	integer = subStringToInteger(str , subString);
+	String *str = stringNew("20/5");
+	stringSkip(str , 3);
+	subString = stringSubStringInChars(str , 1);
 	
-	TEST_ASSERT_EQUAL_STRING("149" , subString);
+	TEST_ASSERT_EQUAL_STRING("5" , subString);
+}
+
+/*#35
+ * Given "12+34*67" skip 4 characters and take the remaining character "4*67" as substring
+ */
+void test_stringSubStringInChars_given_12_plus_34_times_67_skip_4_chars_and_length_is_4_should_return_9_times_67(void)
+{
+	char *subString;
+	String *str = stringNew("12+34*67");
+	stringSkip(str , 4);
+	subString = stringSubStringInChars(str , 4);
+	
+	TEST_ASSERT_EQUAL_STRING("4*67" , subString);
+}
+
+/*#36
+ * Given "149" should return 149 as a integer
+ */
+void test_subStringToInteger_given_149_should_return_149_in_integer(void)
+{
+	char *number = "149";
+	int integer = subStringToInteger(number);
+
 	TEST_ASSERT_EQUAL(149 , integer);
+}
+
+/*#37
+ * Given "-50" should return 149 as a integer
+ */
+void test_subStringToInteger_given_negative_50_should_return_negative_50_in_integer(void)
+{
+	char *number = "-50";
+	int integer = subStringToInteger(number);
+
+	TEST_ASSERT_EQUAL(-50 , integer);
 }

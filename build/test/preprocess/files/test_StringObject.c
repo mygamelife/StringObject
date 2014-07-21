@@ -832,7 +832,33 @@ void test_stringSkip_given_TED_and_skip_1_char_should_skip_T(void)
 
  UnityAssertEqualNumber((_U_SINT)((1)), (_U_SINT)((str->startindex)), (((void *)0)), (_U_UINT)419, UNITY_DISPLAY_STYLE_INT);
 
- UnityAssertEqualNumber((_U_SINT)((3)), (_U_SINT)((str->length)), (((void *)0)), (_U_UINT)420, UNITY_DISPLAY_STYLE_INT);
+ UnityAssertEqualNumber((_U_SINT)((2)), (_U_SINT)((str->length)), (((void *)0)), (_U_UINT)420, UNITY_DISPLAY_STYLE_INT);
+
+}
+
+
+
+
+
+
+
+
+
+
+
+void test_stringSkip_given_Error_and_skip_4_char_should_skip_Erro(void)
+
+{
+
+ String *str = stringNew("Error");
+
+ stringSkip(str , 4);
+
+
+
+ UnityAssertEqualNumber((_U_SINT)((4)), (_U_SINT)((str->startindex)), (((void *)0)), (_U_UINT)432, UNITY_DISPLAY_STYLE_INT);
+
+ UnityAssertEqualNumber((_U_SINT)((1)), (_U_SINT)((str->length)), (((void *)0)), (_U_UINT)433, UNITY_DISPLAY_STYLE_INT);
 
 }
 
@@ -856,11 +882,11 @@ void test_stringSkip_given_Angel_and_skip_5_char_should_skip_all_character(void)
 
 
 
- UnityAssertEqualNumber((_U_SINT)((0)), (_U_SINT)((str->string[str->startindex])), (((void *)0)), (_U_UINT)432, UNITY_DISPLAY_STYLE_INT);
+ UnityAssertEqualNumber((_U_SINT)((0)), (_U_SINT)((str->string[str->startindex])), (((void *)0)), (_U_UINT)445, UNITY_DISPLAY_STYLE_INT);
 
- UnityAssertEqualNumber((_U_SINT)((5)), (_U_SINT)((str->startindex)), (((void *)0)), (_U_UINT)433, UNITY_DISPLAY_STYLE_INT);
+ UnityAssertEqualNumber((_U_SINT)((5)), (_U_SINT)((str->startindex)), (((void *)0)), (_U_UINT)446, UNITY_DISPLAY_STYLE_INT);
 
- UnityAssertEqualNumber((_U_SINT)((5)), (_U_SINT)((str->length)), (((void *)0)), (_U_UINT)434, UNITY_DISPLAY_STYLE_INT);
+ UnityAssertEqualNumber((_U_SINT)((0)), (_U_SINT)((str->length)), (((void *)0)), (_U_UINT)447, UNITY_DISPLAY_STYLE_INT);
 
 }
 
@@ -884,9 +910,9 @@ void test_stringSkip_given_Monalisa_and_skip_negative_two_char_should_skip_nothi
 
 
 
- UnityAssertEqualNumber((_U_SINT)((0)), (_U_SINT)((str->startindex)), (((void *)0)), (_U_UINT)446, UNITY_DISPLAY_STYLE_INT);
+ UnityAssertEqualNumber((_U_SINT)((0)), (_U_SINT)((str->startindex)), (((void *)0)), (_U_UINT)459, UNITY_DISPLAY_STYLE_INT);
 
- UnityAssertEqualNumber((_U_SINT)((8)), (_U_SINT)((str->length)), (((void *)0)), (_U_UINT)447, UNITY_DISPLAY_STYLE_INT);
+ UnityAssertEqualNumber((_U_SINT)((8)), (_U_SINT)((str->length)), (((void *)0)), (_U_UINT)460, UNITY_DISPLAY_STYLE_INT);
 
 }
 
@@ -910,11 +936,11 @@ void test_stringSkip_given_Miracle_and_skip_10_char_should_skip_all_character_an
 
 
 
- UnityAssertEqualNumber((_U_SINT)((0)), (_U_SINT)((str->string[str->startindex])), (((void *)0)), (_U_UINT)459, UNITY_DISPLAY_STYLE_INT);
+ UnityAssertEqualNumber((_U_SINT)((0)), (_U_SINT)((str->string[str->startindex])), (((void *)0)), (_U_UINT)472, UNITY_DISPLAY_STYLE_INT);
 
- UnityAssertEqualNumber((_U_SINT)((7)), (_U_SINT)((str->startindex)), (((void *)0)), (_U_UINT)460, UNITY_DISPLAY_STYLE_INT);
+ UnityAssertEqualNumber((_U_SINT)((7)), (_U_SINT)((str->startindex)), (((void *)0)), (_U_UINT)473, UNITY_DISPLAY_STYLE_INT);
 
- UnityAssertEqualNumber((_U_SINT)((7)), (_U_SINT)((str->length)), (((void *)0)), (_U_UINT)461, UNITY_DISPLAY_STYLE_INT);
+ UnityAssertEqualNumber((_U_SINT)((0)), (_U_SINT)((str->length)), (((void *)0)), (_U_UINT)474, UNITY_DISPLAY_STYLE_INT);
 
 }
 
@@ -938,7 +964,7 @@ void test_stringSubStringInChars_given_82_plus_29_and_length_is_2_should_return_
 
 
 
- UnityAssertEqualString((const char*)("82"), (const char*)(subString), (((void *)0)), (_U_UINT)473);
+ UnityAssertEqualString((const char*)("82"), (const char*)(subString), (((void *)0)), (_U_UINT)486);
 
 }
 
@@ -962,7 +988,7 @@ void test_stringSubStringInChars_given_negative_234_times_1_and_length_is_5_shou
 
 
 
- UnityAssertEqualString((const char*)("-234 "), (const char*)(subString), (((void *)0)), (_U_UINT)485);
+ UnityAssertEqualString((const char*)("-234 "), (const char*)(subString), (((void *)0)), (_U_UINT)498);
 
 }
 
@@ -974,24 +1000,90 @@ void test_stringSubStringInChars_given_negative_234_times_1_and_length_is_5_shou
 
 
 
-void test_subStringToInteger_given_149_minus_20_should_return_149_in_integer(void)
+void test_stringSubStringInChars_given_20_divide_5_skip_3_chars_and_length_is_1_should_return_5(void)
 
 {
 
  char *subString;
 
- int integer;
+ String *str = stringNew("20/5");
 
- String *str = stringNew("149-20");
+ stringSkip(str , 3);
 
- subString = stringSubStringInChars(str , 3);
-
- integer = subStringToInteger(str , subString);
+ subString = stringSubStringInChars(str , 1);
 
 
 
- UnityAssertEqualString((const char*)("149"), (const char*)(subString), (((void *)0)), (_U_UINT)499);
+ UnityAssertEqualString((const char*)("5"), (const char*)(subString), (((void *)0)), (_U_UINT)511);
 
- UnityAssertEqualNumber((_U_SINT)((149)), (_U_SINT)((integer)), (((void *)0)), (_U_UINT)500, UNITY_DISPLAY_STYLE_INT);
+}
+
+
+
+
+
+
+
+
+
+void test_stringSubStringInChars_given_12_plus_34_times_67_skip_4_chars_and_length_is_4_should_return_9_times_67(void)
+
+{
+
+ char *subString;
+
+ String *str = stringNew("12+34*67");
+
+ stringSkip(str , 4);
+
+ subString = stringSubStringInChars(str , 4);
+
+
+
+ UnityAssertEqualString((const char*)("4*67"), (const char*)(subString), (((void *)0)), (_U_UINT)524);
+
+}
+
+
+
+
+
+
+
+
+
+void test_subStringToInteger_given_149_should_return_149_in_integer(void)
+
+{
+
+ char *number = "149";
+
+ int integer = subStringToInteger(number);
+
+
+
+ UnityAssertEqualNumber((_U_SINT)((149)), (_U_SINT)((integer)), (((void *)0)), (_U_UINT)535, UNITY_DISPLAY_STYLE_INT);
+
+}
+
+
+
+
+
+
+
+
+
+void test_subStringToInteger_given_negative_50_should_return_negative_50_in_integer(void)
+
+{
+
+ char *number = "-50";
+
+ int integer = subStringToInteger(number);
+
+
+
+ UnityAssertEqualNumber((_U_SINT)((-50)), (_U_SINT)((integer)), (((void *)0)), (_U_UINT)546, UNITY_DISPLAY_STYLE_INT);
 
 }
