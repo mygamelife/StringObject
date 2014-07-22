@@ -63,3 +63,20 @@ Operator *operatorNewByName(char *name)
 	
 	return op;
 }
+
+/* Delete operator token
+ * input :
+ *			Operator pointer pointing operator token structure
+ * output :
+ *			clear operator token value and free the memory allocated
+ */
+void operatorDel(Operator *op)
+{
+	if(op)
+	{
+		if(op->info)
+			free(op->info);
+			
+		free(op);
+	}
+}

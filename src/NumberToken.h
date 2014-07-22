@@ -9,4 +9,5 @@ typedef struct
 }Number;
 
 Number *numberNew(int value);
+void numberDel(Number *num);
 #endif // NumberToken_H

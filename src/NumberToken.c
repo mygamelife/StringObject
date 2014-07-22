@@ -16,3 +16,20 @@ Number *numberNew(int value)
 	
 	return num;
 }
+
+/* Delete number token
+ * input :
+ *			number pointer pointing number token structure
+ * output :
+ *			clear number token value and free the memory allocated
+ */
+void numberDel(Number *num)
+{
+	if(num)
+	{
+		if(num->value)
+			num->value = 0;
+			
+		free(num);
+	}
+}

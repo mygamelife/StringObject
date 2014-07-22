@@ -48,5 +48,6 @@ typedef struct
 
 Operator *operatorNewByID(OperatorID id);
 Operator *operatorNewByName(char *name);
+void operatorDel(Operator *op);
 
 #endif // OperatorToken_H

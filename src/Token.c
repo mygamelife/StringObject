@@ -5,14 +5,13 @@
 #include <string.h>
 #include "NumberToken.h"
 #include "OperatorToken.h"
+#include "IdentifierToken.h"
 
-/* Identifier 
- */
-Identifier *identifierNew(char *name)
+Token *getToken(String *expression)
 {
-	Identifier *iden = malloc(sizeof(Identifier)); //*iden = identifier pointer
-	iden->type = IDENTIFIER_TOKEN;
-	iden->name = name;
+	printf("expression = %s\n\n" , expression->string);
+	printf("expression start = %d\n\n" , expression->startindex);
+	printf("expression length = %d\n\n", expression->length);
+	stringTrim(expression);
 	
-	return iden;
 }

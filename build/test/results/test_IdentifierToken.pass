@@ -2,12 +2,15 @@
 :source:
   :path: test
   :file: test_IdentifierToken.c
-:successes: []
+:successes:
+- :test: test_identifierNew_given_ABC_should_store_inside_identifierNew
+  :line: 16
+  :message: ''
 :failures: []
 :ignores: []
 :counts:
-  :total: 0
-  :passed: 0
+  :total: 1
+  :passed: 1
   :failed: 0
   :ignored: 0
 :stdout: []

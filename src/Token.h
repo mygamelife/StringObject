@@ -13,15 +13,8 @@ typedef enum
 typedef struct
 {
 	TokenType type;
-	char *name;
-}Identifier;
-
-typedef struct
-{
-	TokenType type;
 }Token;
 
-Identifier *identifierNew(char *name);
 Token *getToken(String *expression);
 
 #endif // Token_H
