@@ -4,7 +4,7 @@
   :file: test_NumberToken.c
 :successes:
 - :test: test_numberNew_given_value_12_should_store_inside_numberNew
-  :line: 17
+  :line: 18
   :message: ''
 :failures: []
 :ignores: []

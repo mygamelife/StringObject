@@ -34,7 +34,7 @@ char* GlobalOrderError;
 //=======External Functions This Runner Calls=====
 extern void setUp(void);
 extern void tearDown(void);
-extern void test_identifierNew_given_ABC_should_store_inside_identifierNew(void);
+extern void test_getToken_given_2_should_get_2_and_pass_to_number_token(void);
 
 
 //=======Test Reset Option=====
@@ -50,7 +50,7 @@ int main(void)
 {
   Unity.TestFile = "test_Token.c";
   UnityBegin();
-  RUN_TEST(test_identifierNew_given_ABC_should_store_inside_identifierNew, 17);
+  RUN_TEST(test_getToken_given_2_should_get_2_and_pass_to_number_token, 15);
 
   return (UnityEnd());
 }

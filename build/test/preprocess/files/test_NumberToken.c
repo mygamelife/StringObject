@@ -1,5 +1,6 @@
 #include "unity.h"
 #include "Token.h"
+#include "StringObject.h"
 #include "NumberToken.h"
 
 
@@ -35,10 +36,10 @@ void test_numberNew_given_value_12_should_store_inside_numberNew(void)
 
 
 
- if ((((number)) != ((void *)0))) {} else {UnityFail( (" Expected Non-NULL"), (_U_UINT)(_U_UINT)(_U_UINT)21);;};
+ if ((((number)) != ((void *)0))) {} else {UnityFail( (" Expected Non-NULL"), (_U_UINT)(_U_UINT)(_U_UINT)22);;};
 
- UnityAssertEqualNumber((_U_SINT)((NUMBER_TOKEN)), (_U_SINT)((number->type)), (((void *)0)), (_U_UINT)22, UNITY_DISPLAY_STYLE_INT);
+ UnityAssertEqualNumber((_U_SINT)((NUMBER_TOKEN)), (_U_SINT)((number->type)), (((void *)0)), (_U_UINT)23, UNITY_DISPLAY_STYLE_INT);
 
- UnityAssertEqualNumber((_U_SINT)((12)), (_U_SINT)((number->value)), (((void *)0)), (_U_UINT)23, UNITY_DISPLAY_STYLE_INT);
+ UnityAssertEqualNumber((_U_SINT)((12)), (_U_SINT)((number->value)), (((void *)0)), (_U_UINT)24, UNITY_DISPLAY_STYLE_INT);
 
 }

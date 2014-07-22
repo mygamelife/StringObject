@@ -3,8 +3,8 @@
   :path: test
   :file: test_Token.c
 :successes:
-- :test: test_identifierNew_given_ABC_should_store_inside_identifierNew
-  :line: 17
+- :test: test_getToken_given_2_should_get_2_and_pass_to_number_token
+  :line: 15
   :message: ''
 :failures: []
 :ignores: []
@@ -13,4 +13,10 @@
   :passed: 1
   :failed: 0
   :ignored: 0
-:stdout: []
+:stdout:
+- 'expression =   2  '
+- ''
+- expression start = 0
+- ''
+- expression length = 5
+- ''

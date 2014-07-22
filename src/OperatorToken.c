@@ -72,11 +72,6 @@ Operator *operatorNewByName(char *name)
  */
 void operatorDel(Operator *op)
 {
-	if(op)
-	{
-		if(op->info)
-			free(op->info);
-			
+	if(op)		
 		free(op);
-	}
 }
