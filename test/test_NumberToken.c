@@ -1,7 +1,8 @@
 #include "unity.h"
-#include "NumberToken.h"
-#include "Token.h"
 #include "StringObject.h"
+#include "NumberToken.h"
+#include "OperatorToken.h"
+#include "Token.h"
 
 void setUp(void)
 {

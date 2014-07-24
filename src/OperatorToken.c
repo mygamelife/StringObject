@@ -29,15 +29,17 @@ Operator *operatorNewByID(OperatorID id)
 	int i = 0;
 	Operator *op = malloc(sizeof(Operator)); //*op = operator pointer
 	op->type	 = OPERATOR_TOKEN;
-	op->info = NULL;
 	
 	for(i ; i < PRIMARY_TABLE_SIZE ; i++)
 	{
 		if(primaryOperatorTable[i].id == id)
+		{
 			op->info = &primaryOperatorTable[i];
+			return op;
+		}
 	}
 	
-	return op;
+	return NULL;
 }
 
 /* Create new structure for operator (Identify by ID)
@@ -51,17 +53,19 @@ Operator *operatorNewByName(char *name)
 	int i = 0 , result;
 	Operator *op = malloc(sizeof(Operator)); //*op = operator pointer
 	op->type	 = OPERATOR_TOKEN;
-	op->info = NULL;
 	
 	for(i ; i < PRIMARY_TABLE_SIZE ; i++)
 	{
 		result = strcmp(primaryOperatorTable[i].name, name);
 		
 		if(result == 0)
+		{
 			op->info = &primaryOperatorTable[i];
+			return op;
+		}
 	}
 	
-	return op;
+	return NULL;
 }
 
 /* Delete operator token

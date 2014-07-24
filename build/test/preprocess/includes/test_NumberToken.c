@@ -1,5 +1,6 @@
 ---
 - NumberToken.h
+- OperatorToken.h
 - StringObject.h
 - Token.h
 - unity.h

@@ -1,6 +1,6 @@
 #include "NumberToken.h"
-#include "Token.h"
 #include <malloc.h>
+#include "Token.h"
 
 /* Create new structure for number token
  * input :

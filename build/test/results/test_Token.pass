@@ -4,19 +4,42 @@
   :file: test_Token.c
 :successes:
 - :test: test_getToken_given_2_should_get_2_and_pass_to_number_token
-  :line: 15
+  :line: 18
+  :message: ''
+- :test: test_getToken_given_tab_841_should_get_841_and_pass_to_number_token
+  :line: 31
+  :message: ''
+- :test: test_getToken_given_tab_23_40_tab_and_getToken_x2_should_get_number_token_value_40
+  :line: 44
+  :message: ''
+- :test: test_getToken_given_AND_operator_in_string_should_get_AND_operator_and_return_as_an_operator_token
+  :line: 58
+  :message: ''
+- :test: test_getToken_given_multiply_operator_in_string_should_get_multiply_operator_and_return_as_an_operator_token
+  :line: 69
+  :message: ''
+- :test: test_getToken_given_open_square_bracket_should_return_NULL
+  :line: 80
   :message: ''
 :failures: []
 :ignores: []
 :counts:
-  :total: 1
-  :passed: 1
+  :total: 6
+  :passed: 6
   :failed: 0
   :ignored: 0
 :stdout:
-- 'expression =   2  '
+- charAtThisPos = 2
 - ''
-- expression start = 0
+- charAtThisPos = 8
 - ''
-- expression length = 5
+- charAtThisPos = 2
+- ''
+- charAtThisPos = 2
+- ''
+- charAtThisPos = &
+- ''
+- charAtThisPos = *
+- ''
+- charAtThisPos = [
 - ''

@@ -42,6 +42,8 @@ void test_operatorNewByID_given_operator_ID_ADD_OP_should_store_operator_info_in
 
  UnityAssertEqualNumber((_U_SINT)((ADD_OP)), (_U_SINT)((operator->info->id)), (((void *)0)), (_U_UINT)23, UNITY_DISPLAY_STYLE_INT);
 
+ operatorDel(operator);
+
 }
 
 
@@ -64,9 +66,9 @@ void test_operatorNewByID_given_operator_ID_15_should_store_nothing_information_
 
 
 
- UnityAssertEqualNumber((_U_SINT)((OPERATOR_TOKEN)), (_U_SINT)((operator->type)), (((void *)0)), (_U_UINT)35, UNITY_DISPLAY_STYLE_INT);
+ if ((((operator)) == ((void *)0))) {} else {UnityFail( (" Expected NULL"), (_U_UINT)(_U_UINT)(_U_UINT)36);;};
 
- if ((((operator->info)) == ((void *)0))) {} else {UnityFail( (" Expected NULL"), (_U_UINT)(_U_UINT)(_U_UINT)36);;};
+ operatorDel(operator);
 
 }
 
@@ -90,13 +92,15 @@ void test_operatorNewByName_given_multiply_operator_name_should_store_multiply_o
 
 
 
- if ((((operator->info)) != ((void *)0))) {} else {UnityFail( (" Expected Non-NULL"), (_U_UINT)(_U_UINT)(_U_UINT)48);;};
+ if ((((operator->info)) != ((void *)0))) {} else {UnityFail( (" Expected Non-NULL"), (_U_UINT)(_U_UINT)(_U_UINT)49);;};
 
- UnityAssertEqualString((const char*)("*"), (const char*)(operator->info->name), (((void *)0)), (_U_UINT)49);
+ UnityAssertEqualString((const char*)("*"), (const char*)(operator->info->name), (((void *)0)), (_U_UINT)50);
 
- UnityAssertEqualNumber((_U_SINT)((MUL_OP)), (_U_SINT)((operator->info->id)), (((void *)0)), (_U_UINT)50, UNITY_DISPLAY_STYLE_INT);
+ UnityAssertEqualNumber((_U_SINT)((MUL_OP)), (_U_SINT)((operator->info->id)), (((void *)0)), (_U_UINT)51, UNITY_DISPLAY_STYLE_INT);
 
- UnityAssertEqualNumber((_U_SINT)((80)), (_U_SINT)((operator->info->precedence)), (((void *)0)), (_U_UINT)51, UNITY_DISPLAY_STYLE_INT);
+ UnityAssertEqualNumber((_U_SINT)((80)), (_U_SINT)((operator->info->precedence)), (((void *)0)), (_U_UINT)52, UNITY_DISPLAY_STYLE_INT);
+
+ operatorDel(operator);
 
 }
 
@@ -120,8 +124,8 @@ void test_operatorNewByName_given_square_bracket_name_should_store_nothing(void)
 
 
 
- UnityAssertEqualNumber((_U_SINT)((OPERATOR_TOKEN)), (_U_SINT)((operator->type)), (((void *)0)), (_U_UINT)63, UNITY_DISPLAY_STYLE_INT);
+ if ((((operator)) == ((void *)0))) {} else {UnityFail( (" Expected NULL"), (_U_UINT)(_U_UINT)(_U_UINT)65);;};
 
- if ((((operator->info)) == ((void *)0))) {} else {UnityFail( (" Expected NULL"), (_U_UINT)(_U_UINT)(_U_UINT)64);;};
+ operatorDel(operator);
 
 }

@@ -35,6 +35,11 @@ char* GlobalOrderError;
 extern void setUp(void);
 extern void tearDown(void);
 extern void test_getToken_given_2_should_get_2_and_pass_to_number_token(void);
+extern void test_getToken_given_tab_841_should_get_841_and_pass_to_number_token(void);
+extern void test_getToken_given_tab_23_40_tab_and_getToken_x2_should_get_number_token_value_40(void);
+extern void test_getToken_given_AND_operator_in_string_should_get_AND_operator_and_return_as_an_operator_token(void);
+extern void test_getToken_given_multiply_operator_in_string_should_get_multiply_operator_and_return_as_an_operator_token(void);
+extern void test_getToken_given_open_square_bracket_should_return_NULL(void);
 
 
 //=======Test Reset Option=====
@@ -50,7 +55,12 @@ int main(void)
 {
   Unity.TestFile = "test_Token.c";
   UnityBegin();
-  RUN_TEST(test_getToken_given_2_should_get_2_and_pass_to_number_token, 15);
+  RUN_TEST(test_getToken_given_2_should_get_2_and_pass_to_number_token, 18);
+  RUN_TEST(test_getToken_given_tab_841_should_get_841_and_pass_to_number_token, 31);
+  RUN_TEST(test_getToken_given_tab_23_40_tab_and_getToken_x2_should_get_number_token_value_40, 44);
+  RUN_TEST(test_getToken_given_AND_operator_in_string_should_get_AND_operator_and_return_as_an_operator_token, 58);
+  RUN_TEST(test_getToken_given_multiply_operator_in_string_should_get_multiply_operator_and_return_as_an_operator_token, 69);
+  RUN_TEST(test_getToken_given_open_square_bracket_should_return_NULL, 80);
 
   return (UnityEnd());
 }

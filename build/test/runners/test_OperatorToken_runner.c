@@ -54,9 +54,9 @@ int main(void)
   Unity.TestFile = "test_OperatorToken.c";
   UnityBegin();
   RUN_TEST(test_operatorNewByID_given_operator_ID_ADD_OP_should_store_operator_info_inside_operatorNewByID, 16);
-  RUN_TEST(test_operatorNewByID_given_operator_ID_15_should_store_nothing_information_inside_operatorNewByID, 30);
-  RUN_TEST(test_operatorNewByName_given_multiply_operator_name_should_store_multiply_operator_info, 43);
-  RUN_TEST(test_operatorNewByName_given_square_bracket_name_should_store_nothing, 58);
+  RUN_TEST(test_operatorNewByID_given_operator_ID_15_should_store_nothing_information_inside_operatorNewByID, 31);
+  RUN_TEST(test_operatorNewByName_given_multiply_operator_name_should_store_multiply_operator_info, 44);
+  RUN_TEST(test_operatorNewByName_given_square_bracket_name_should_store_nothing, 60);
 
   return (UnityEnd());
 }

@@ -4,7 +4,7 @@
 
 typedef enum
 {
-	UNKOWN,
+	UNKNOWN,
 	NUMBER_TOKEN,
 	OPERATOR_TOKEN,
 	IDENTIFIER_TOKEN
@@ -16,5 +16,4 @@ typedef struct
 }Token;
 
 Token *getToken(String *expression);
-
 #endif // Token_H
