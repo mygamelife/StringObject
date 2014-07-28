@@ -27,10 +27,5 @@ Identifier *identifierNew(char *name)
 void identifierDel(Identifier *iden)
 {
 	if(iden)
-	{
-		if(iden->name)
-			iden->name = "";
-			
 		free(iden);
-	}
 }

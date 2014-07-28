@@ -28,13 +28,8 @@ String *stringNew(char *charString)
  */
 void stringTrimLeft(String *str)
 {
-	int i = 0;
-
-	while(isspace(str->string[i]))
-	{
-		i++;
-		str->startindex = i;
-	}
+	while(isspace(str->string[str->startindex]))
+		str->startindex++;
 }
 
 /* To remove all spaces at right side
@@ -45,8 +40,8 @@ void stringTrimLeft(String *str)
  */
 void stringTrimRight(String *str)
 {
-	int i = str->length;
-
+	int i = strlen(str->string);
+		
 	if(str->string[i] == 0)
 		i--;
 		
@@ -92,16 +87,12 @@ String *stringRemoveWordContaining(String *str , char *containSet)
 				{
 					removedWord->startindex = i; //first character found	
 					firstFound = 1; //make sure this statement wont run again when the first character is found
-		
-					if(i != 0) // if first character found but not in first position
-						str->length = str->length - i;
 				}
 				
 				removedWord->length++; //one word is detected in ContainSet
 				str->startindex = i+1;
-				str->length--; //decrement once after one word removed
 				notInSet = 0;
-				
+					
 				goto jump;
 			}
 			
@@ -120,6 +111,7 @@ jump:
 	}	
 
 end:
+	str->length = strlen(str->string) - str->startindex;
 	return removedWord;
 }
 
@@ -239,12 +231,15 @@ void stringSkip(String *str , int numOfCharToSkip)
  */
 char *stringSubStringInChars(String *str , int length)
 {
-	int i = 0;
+	int i = 0 , j = str->startindex;
 	char *charStr = malloc(sizeof(char) * length + 1); //malloc charStr in order to return
 	
 	for(i ; i < length ; i++)
 	{
-		charStr[i] = str->string[str->startindex++];
+		charStr[i] = str->string[j++];
+		str->startindex++;
+		if(str->length != 0)
+			str->length--;
 		charStr[i+1] = 0; //Create delimiter "\0" for the string
 	}	
 	
@@ -264,4 +259,22 @@ int subStringToInteger(char *subString)
 	integer = atoi(subString); //atoi ASCII to integer
 	
 	return integer;
+}
+
+/* Free memory allocate
+ * free str pointer
+ */
+void stringDel(String *str)
+{
+	if(str)
+		free(str);
+}
+
+/* Free memory allocate
+ * free sub string pointer
+ */
+void subStringDel(char *subString)
+{
+	if(subString)
+		free(subString);
 }

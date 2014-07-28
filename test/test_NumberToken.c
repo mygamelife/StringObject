@@ -2,6 +2,7 @@
 #include "StringObject.h"
 #include "NumberToken.h"
 #include "OperatorToken.h"
+#include "IdentifierToken.h"
 #include "Token.h"
 
 void setUp(void)
@@ -23,4 +24,6 @@ void test_numberNew_given_value_12_should_store_inside_numberNew(void)
 	TEST_ASSERT_NOT_NULL(number);
 	TEST_ASSERT_EQUAL(NUMBER_TOKEN , number->type);
 	TEST_ASSERT_EQUAL(12 , number->value);
+	
+	numberDel(number);
 }

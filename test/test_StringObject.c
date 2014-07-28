@@ -10,19 +10,21 @@ void tearDown(void)
 {
 }
 
-/*#1
+/*
  * Create a new String
  */ 
-void test_stringNewX_given_NEW_startindex_0_and_length_0(void)
+void test_stringNew_given_NEW_startindex_0_and_length_0(void)
 {
 	String *str = stringNew("NEW");
 	
 	TEST_ASSERT_EQUAL_STRING("NEW" , str->string);
 	TEST_ASSERT_EQUAL(0 , str->startindex);
 	TEST_ASSERT_EQUAL(3 , str->length);
+	
+	stringDel(str);
 }
 
-/*#2
+/*
  * Trim all the spaces from left and stop at non-spaces character
  */
 void test_stringTrimLeft_should_skip_spaces_on_left_sides_0(void)
@@ -32,9 +34,11 @@ void test_stringTrimLeft_should_skip_spaces_on_left_sides_0(void)
 	
 	TEST_ASSERT_EQUAL(1 , str->startindex);
 	TEST_ASSERT_EQUAL(4 , str->length);
+	
+	stringDel(str);
 }
 
-/*#3
+/*
  * Trim all the spaces included \t from left and stop at non-spaces character
  */
 void test_stringTrimLeft_should_skip_spaces_on_left_sides_1(void)
@@ -44,9 +48,11 @@ void test_stringTrimLeft_should_skip_spaces_on_left_sides_1(void)
 	
 	TEST_ASSERT_EQUAL(2 , str->startindex);
 	TEST_ASSERT_EQUAL(5 , str->length);
+	
+	stringDel(str);
 }
 
-/*#4
+/*
  * Trim all the spaces included \t from left and character is between spaces
  */
 void test_stringTrimLeft_should_skip_spaces_on_left_sides_2(void)
@@ -56,9 +62,11 @@ void test_stringTrimLeft_should_skip_spaces_on_left_sides_2(void)
 	
 	TEST_ASSERT_EQUAL(3 , str->startindex);
 	TEST_ASSERT_EQUAL(10 , str->length);
+	
+	stringDel(str);
 }
 
-/*#5
+/*
  * Trim all the spaces from right
  */
 void test_stringTrimRight_should_skip_spaces_on_left_sides_0(void)
@@ -68,21 +76,26 @@ void test_stringTrimRight_should_skip_spaces_on_left_sides_0(void)
 
 	TEST_ASSERT_EQUAL(0 , str->startindex);
 	TEST_ASSERT_EQUAL(7 , str->length);
+	
+	stringDel(str);
 }
 
-/*#6
- * Trim all the spaces on right side of the string and don't care the spaces on left side
+/*
+ * Trim all the spaces on right side of the string and 
+ * str->length should remain same when i call stringTrimRight x2
  */
-void test_stringTrimRight_should_skip_spaces_on_left_sides_1(void)
+void test_stringTrimRight_should_skip_spaces_on_left_sides_str_length_will_remain_same_when_i_call_trim_right_x2(void)
 {
-	String *str = stringNew("  DRY ");
+	String *str = stringNew("  DRY    ");
 	stringTrimRight(str);
 	
 	TEST_ASSERT_EQUAL(0 , str->startindex);
 	TEST_ASSERT_EQUAL(5 , str->length);
+	
+	stringDel(str);
 }
 
-/*#7
+/*
  * Trim all the spaces on right side included \t and don't care the spaces in between character
  */
 void test_stringTrimRight_should_skip_spaces_on_left_sides_2(void)
@@ -92,9 +105,11 @@ void test_stringTrimRight_should_skip_spaces_on_left_sides_2(void)
 	
 	TEST_ASSERT_EQUAL(0 , str->startindex);
 	TEST_ASSERT_EQUAL(7 , str->length);
+	
+	stringDel(str);
 }
 
-/*#8
+/*
  * Trim spaces on left and right of the string
  */
 void test_stringTrim_should_skip_spaces_on_left_and_right_sides_0(void)
@@ -104,9 +119,11 @@ void test_stringTrim_should_skip_spaces_on_left_and_right_sides_0(void)
 		
 	TEST_ASSERT_EQUAL(1 , str->startindex);
 	TEST_ASSERT_EQUAL(7 , str->length);
+	
+	stringDel(str);
 }
 
-/*#9
+/*
  * Trim spaces on left and right of the string and don't trim spaces in middle of string
  */
 void test_stringTrim_should_skip_spaces_on_left_and_right_sides_1(void)
@@ -116,9 +133,11 @@ void test_stringTrim_should_skip_spaces_on_left_and_right_sides_1(void)
 
 	TEST_ASSERT_EQUAL(2 , str->startindex);
 	TEST_ASSERT_EQUAL(6 , str->length);
+	
+	stringDel(str);
 }
 
-/*#10
+/*
  * Trim spaces on left and right of the string (Included \t tab) and don't trim spaces in middle of string
  */
 void test_stringTrim_should_skip_spaces_on_left_and_right_sides_2(void)
@@ -128,16 +147,18 @@ void test_stringTrim_should_skip_spaces_on_left_and_right_sides_2(void)
 
 	TEST_ASSERT_EQUAL(4 , str->startindex);
 	TEST_ASSERT_EQUAL(10 , str->length);
+	
+	stringDel(str);
 }
 
-/*#11
+/*
  * Given " HELLO" and containSet "L" should remove two LL 
  */
 void test_stringRemoveWordContaining_given_HELLO_should_remove_L(void)
 {
 	String *str = stringNew(" HELLO");
-	stringTrim(str);
 	String *result;
+	stringTrim(str);
 	result = stringRemoveWordContaining(str , "L");
 	
 	/*Removed String*/
@@ -146,9 +167,11 @@ void test_stringRemoveWordContaining_given_HELLO_should_remove_L(void)
 	/*Original String after Removed Word Containing*/
 	TEST_ASSERT_EQUAL(5 , str->startindex);
 	TEST_ASSERT_EQUAL(1 , str->length);
+	
+	stringDel(str);
 }
 
-/*#12
+/*
  * Given "MAXIS" and containSet "AI" should remove A and stop at X since X not inside containSet
  */ 
 void test_stringRemoveWordContaining_MAXIS_should_remove_A(void)
@@ -164,28 +187,11 @@ void test_stringRemoveWordContaining_MAXIS_should_remove_A(void)
 	/*Original String after Removed Word Containing*/
 	TEST_ASSERT_EQUAL(2 , str->startindex);
 	TEST_ASSERT_EQUAL(3 , str->length);
-}
-
-/*#13
- * Given " Beef " and containSet "f" should stop at f
- * str->start index is next to f and length is 0
- */
-void test_stringRemoveWordContaining_Beef_should_remove_f(void)
-{	
-	String *str = stringNew(" Beef ");
-	stringTrim(str);
-	String *result;
-	result = stringRemoveWordContaining(str , "f");
 	
-	/*Removed String*/
-	TEST_ASSERT_EQUAL(4 , result->startindex);
-	TEST_ASSERT_EQUAL(1 , result->length);
-	/*Original String after Removed Word Containing*/
-	TEST_ASSERT_EQUAL(5 , str->startindex);
-	TEST_ASSERT_EQUAL(0 , str->length);
+	stringDel(str);
 }
 
-/*#14
+/*
  * given " \t 21 + 32  \t " and containSet "01234"
  * 21 will be remove and str->startindex stop at position next to 21 which is space
  */
@@ -201,10 +207,12 @@ void test_stringRemoveWordContaining_space_tab_21_plus_32_space_tab_should_remov
 	TEST_ASSERT_EQUAL(2 , result->length);
 	/*Original String after Removed Word Containing*/
 	TEST_ASSERT_EQUAL(5 , str->startindex);
-	TEST_ASSERT_EQUAL(5 , str->length);
+	TEST_ASSERT_EQUAL(9 , str->length);
+	
+	stringDel(str);
 }
 
-/*#15
+/*
  * given "\t -10 + 2 " and containSet "43210"
  * skip negative sign
  * 10 will be remove and str->startindex stop at position next to 10 which is space
@@ -221,29 +229,83 @@ void test_stringRemoveWordContaining_tab_space_negative_10_plus_2_space_should_r
 	TEST_ASSERT_EQUAL(2 , result->length);
 	/*Original String after Removed Word Containing*/
 	TEST_ASSERT_EQUAL(5 , str->startindex);
-	TEST_ASSERT_EQUAL(4 , str->length);
+	TEST_ASSERT_EQUAL(5 , str->length);
+	
+	stringDel(str);
 }
 
-/*#16
- * given "\tAB + CD\t" and containSet "XYZ"
- * ABCD not inside containSet therefore remove nothing
+/*
+ * given "\tAB + CD\t" and containSet "+"
+ * should remove "+" only and remain " CD\t" ,str->length is 4 
  */
 void test_stringRemoveWordContaining_tab_AB_plus_CD_tab_should_remove_nothing(void)
 {
 	String *str = stringNew("\tAB + CD\t");
 	stringTrim(str);
 	String *result;
-	result = stringRemoveWordContaining(str , "XYZ");
+	result = stringRemoveWordContaining(str , "+");
+	
+	/*Removed String*/
+	TEST_ASSERT_EQUAL(4 , result->startindex);
+	TEST_ASSERT_EQUAL(1 , result->length);
+	/*Original String after Removed Word Containing*/
+	TEST_ASSERT_EQUAL(5 , str->startindex);
+	TEST_ASSERT_EQUAL(4 , str->length);
+	
+	stringDel(str);
+}
+
+/*
+ * Given " Beef " and containSet "f"
+ * when call stringRemoveWordContaining x2 should remove nothing and str->length should 0
+ */
+void test_stringRemoveWordContaining_Beef_and_call_stringRemoveWordContaining_x2_should_nothing(void)
+{	
+	String *str = stringNew(" Beef ");
+	String *result;
+	stringTrim(str);
+	result = stringRemoveWordContaining(str , "f");
+	stringTrim(str);
+	result = stringRemoveWordContaining(str , "f");
 	
 	/*Removed String*/
 	TEST_ASSERT_EQUAL(0 , result->startindex);
 	TEST_ASSERT_EQUAL(0 , result->length);
 	/*Original String after Removed Word Containing*/
-	TEST_ASSERT_EQUAL(1 , str->startindex);
-	TEST_ASSERT_EQUAL(8 , str->length);
+	TEST_ASSERT_EQUAL(6 , str->startindex);
+	TEST_ASSERT_EQUAL(0 , str->length);
+	
+	stringDel(str);
 }
 
-/*#17
+/*
+ * given " 123 + 65 * 91 " and containSet "0123456789"
+ * After call stringRemoveWordContaining x4 should remove nothing and str->length is 0
+ */
+void test_stringRemoveWordContaining_123_plus_65_times_91_should_remove_nothing(void)
+{
+	String *str = stringNew(" 123 + 65 * 91 ");
+	String *result;
+	stringTrim(str);
+	result = stringRemoveWordContaining(str , "0123456789");
+	stringTrim(str);
+	result = stringRemoveWordContaining(str , "0123456789");
+	stringTrim(str);
+	result = stringRemoveWordContaining(str , "0123456789");
+	stringTrim(str);
+	result = stringRemoveWordContaining(str , "0123456789");
+	
+	/*Removed String*/
+	TEST_ASSERT_EQUAL(0 , result->startindex);
+	TEST_ASSERT_EQUAL(0 , result->length);
+	/*Original String after Removed Word Containing*/
+	TEST_ASSERT_EQUAL(15 , str->startindex);
+	TEST_ASSERT_EQUAL(0 , str->length);
+	
+	stringDel(str);
+}
+
+/*
  * Given ",ABC" and notContainSet "A"
  * Should remove comma "," and stop at A because A contain in notContainSet
 */
@@ -260,9 +322,11 @@ void test_stringRemoveWordNotContaining_comma_ABC_comma_should_remove_ABC(void)
 	/*String contain in notContainSet*/
 	TEST_ASSERT_EQUAL(1 , str->startindex);
 	TEST_ASSERT_EQUAL(3 , str->length);
+	
+	stringDel(str);
 }
 
-/*#18
+/*
  * Given "Jel'ly" and notContainSet "'"
  * Should remove "Jel" and stop at apostrophe ' because ' contain in notContainSet
 */
@@ -279,9 +343,11 @@ void test_stringRemoveWordNotContaining_Jel_apostrophe_ly_should_remove_Jel(void
 	/*String contain in notContainSet*/
 	TEST_ASSERT_EQUAL(3 , str->startindex);
 	TEST_ASSERT_EQUAL(3 , str->length);
+	
+	stringDel(str);
 }
 
-/*#19
+/*
  * Given "Lady[]" and notContainSet "[]"
  * Should remove "Lady" and stop at square bracket [ because [ contain in notContainSet
 */
@@ -298,9 +364,11 @@ void test_stringRemoveWordNotContaining_Lady_square_bracket_should_remove_square
 	/*String contain in notContainSet*/
 	TEST_ASSERT_EQUAL(6 , str->startindex);
 	TEST_ASSERT_EQUAL(0 , str->length);
+	
+	stringDel(str);
 }
 
-/*#20
+/*
  * Given "Oil," and notContainSet ";'["
  * Should remove all because all words not contain inside notContainSet
 */
@@ -317,9 +385,11 @@ void test_stringRemoveWordNotContaining_Oil_comma_should_remove_Oil_comma(void)
 	/*String contain in notContainSet*/
 	TEST_ASSERT_EQUAL(4 , str->startindex);
 	TEST_ASSERT_EQUAL(0 , str->length);
+	
+	stringDel(str);
 }
 
-/*#21
+/*
  * Given string "Apple" and relativePos 1
  * Should return the relative position character "p"
  */
@@ -331,9 +401,11 @@ void test_stringCharAt_given_Apple_and_relative_position_1_should_return_p(void)
 	
 	/* p = 112 in ASCII table */
 	TEST_ASSERT_EQUAL(112 , charAtThisPosition);
+	
+	stringDel(str);
 }
 
-/*#22
+/*
  * Given string "Orange" and relativePos 6
  * Should return -1
  */
@@ -345,9 +417,11 @@ void test_stringCharAt_given_Orange_and_relative_position_6_should_return_negati
 	
 	/* position 6 is beyond the position "e" */
 	TEST_ASSERT_EQUAL(-1 , charAtThisPosition);
+	
+	stringDel(str);
 }
 
-/*#23
+/*
  * Given string "2+3" and relativePos -5
  * Should return -1
  */
@@ -359,9 +433,11 @@ void test_stringCharAt_given_2_plus_3_and_relative_position_negative_five_should
 	
 	/* -5 is not a valid position inside the string */
 	TEST_ASSERT_EQUAL(-1 , charAtThisPosition);
+	
+	stringDel(str);
 }
 
-/*#24
+/*
  * Given string "Q" and should remove only one character "Q" and startindex 1 and length is 0
  */
 void test_stringCharAt_given_Q_should_remove_Q(void)
@@ -374,9 +450,11 @@ void test_stringCharAt_given_Q_should_remove_Q(void)
 	TEST_ASSERT_EQUAL(81 , removedChar);
 	TEST_ASSERT_EQUAL(1 , str->startindex);
 	TEST_ASSERT_EQUAL(0 , str->length);
+	
+	stringDel(str);
 }
 
-/*#25
+/*
  * Given string "Bone" and should remove character "B" and startindex 1 and length is 3
  */
 void test_stringCharAt_given_Bone_should_remove_B(void)
@@ -389,9 +467,11 @@ void test_stringCharAt_given_Bone_should_remove_B(void)
 	TEST_ASSERT_EQUAL(66 , removedChar);
 	TEST_ASSERT_EQUAL(1 , str->startindex);
 	TEST_ASSERT_EQUAL(3 , str->length);
+	
+	stringDel(str);
 }
 
-/*#26
+/*
  * Given string "Pig" remove 2 times startindex = 2 & length = 1
  */
 void test_stringCharAt_given_Pig_and_removex2_should_remove_i(void)
@@ -405,9 +485,11 @@ void test_stringCharAt_given_Pig_and_removex2_should_remove_i(void)
 	TEST_ASSERT_EQUAL(105 , removedChar);
 	TEST_ASSERT_EQUAL(2 , str->startindex);
 	TEST_ASSERT_EQUAL(1 , str->length);
+	
+	stringDel(str);
 }
 
-/*#27
+/*
  * Given string "TED" and number of character to skip is 1 
  * Should skip "T" and remain "ED"
  */
@@ -418,9 +500,11 @@ void test_stringSkip_given_TED_and_skip_1_char_should_skip_T(void)
 	
 	TEST_ASSERT_EQUAL(1 , str->startindex);
 	TEST_ASSERT_EQUAL(2 , str->length);
+	
+	stringDel(str);
 }
 
-/*#28
+/*
  * Given string "Error" and number of character to skip is 4 
  * Should skip "Erro" and remain "r"
  */
@@ -431,9 +515,11 @@ void test_stringSkip_given_Error_and_skip_4_char_should_skip_Erro(void)
 	
 	TEST_ASSERT_EQUAL(4 , str->startindex);
 	TEST_ASSERT_EQUAL(1 , str->length);
+	
+	stringDel(str);
 }
 
-/*#29
+/*
  * Given string "Angel" and number of character to skip is 5 
  * Should skip "Angel" and remain nothing
  */
@@ -445,9 +531,11 @@ void test_stringSkip_given_Angel_and_skip_5_char_should_skip_all_character(void)
 	TEST_ASSERT_EQUAL(0 , str->string[str->startindex]);
 	TEST_ASSERT_EQUAL(5 , str->startindex);
 	TEST_ASSERT_EQUAL(0 , str->length);
+	
+	stringDel(str);
 }
 
-/*#30
+/*
  * Given string "Monalisa" and number of character to skip is -2 
  * Should skip nothing
  */
@@ -458,9 +546,11 @@ void test_stringSkip_given_Monalisa_and_skip_negative_two_char_should_skip_nothi
 	
 	TEST_ASSERT_EQUAL(0 , str->startindex);
 	TEST_ASSERT_EQUAL(8 , str->length);
+	
+	stringDel(str);
 }
 
-/*#31
+/*
  * Given string "Miracle" and number of character to skip is 10 
  * Should skip all character and startindex pointing at 5
  */
@@ -472,9 +562,11 @@ void test_stringSkip_given_Miracle_and_skip_10_char_should_skip_all_character_an
 	TEST_ASSERT_EQUAL(0 , str->string[str->startindex]);
 	TEST_ASSERT_EQUAL(7 , str->startindex);
 	TEST_ASSERT_EQUAL(0 , str->length);
+	
+	stringDel(str);
 }
 
-/*#32
+/*
  * Given "82+29" and length is 2 should remove "82" as a substring
  */
 void test_stringSubStringInChars_given_82_plus_29_and_length_is_2_should_return_82(void)
@@ -484,9 +576,50 @@ void test_stringSubStringInChars_given_82_plus_29_and_length_is_2_should_return_
 	subString = stringSubStringInChars(str , 2);
 	
 	TEST_ASSERT_EQUAL_STRING("82" , subString);
+	TEST_ASSERT_EQUAL(2 , str->startindex);
+	TEST_ASSERT_EQUAL(3 , str->length);
+	
+	subStringDel(subString);
+	stringDel(str);
 }
 
-/*#33
+/*
+ * Given "40*5", length is 2 and call subString twice should return *5
+ */
+void test_stringSubStringInChars_given_40_times_5_length_is_2_and_call_subString_x2_should_return_times_5(void)
+{
+	char *subString;
+	String *str = stringNew("40*5");
+	subString = stringSubStringInChars(str , 2);
+	subString = stringSubStringInChars(str , 2);
+	
+	TEST_ASSERT_EQUAL_STRING("*5" , subString);
+	TEST_ASSERT_EQUAL(4 , str->startindex);
+	TEST_ASSERT_EQUAL(0 , str->length);
+	
+	subStringDel(subString);
+	stringDel(str);
+}
+
+/*
+ * Given "65*160", length is 6 and call subString twice should nothing
+ */
+void test_stringSubStringInChars_given_65_times_160_length_is_6_and_call_subString_x2_should_return_nothing(void)
+{
+	char *subString;
+	String *str = stringNew("65*160");
+	subString = stringSubStringInChars(str , 6);
+	subString = stringSubStringInChars(str , 6);
+	
+	TEST_ASSERT_EQUAL_STRING("" , subString);
+	TEST_ASSERT_EQUAL(12 , str->startindex);
+	TEST_ASSERT_EQUAL(0 , str->length);
+	
+	subStringDel(subString);
+	stringDel(str);
+}
+
+/*
  * Given "-234 * 1" and length is 2 should remove "-234 " as a substring
  */
 void test_stringSubStringInChars_given_negative_234_times_1_and_length_is_5_should_return_negative_234_space(void)
@@ -496,9 +629,12 @@ void test_stringSubStringInChars_given_negative_234_times_1_and_length_is_5_shou
 	subString = stringSubStringInChars(str , 5);
 	
 	TEST_ASSERT_EQUAL_STRING("-234 " , subString);
+	
+	subStringDel(subString);
+	stringDel(str);
 }
 
-/*#34
+/*
  * Given "20/5" skip 3 characters and take the remaining character "5" as substring
  */
 void test_stringSubStringInChars_given_20_divide_5_skip_3_chars_and_length_is_1_should_return_5(void)
@@ -509,9 +645,12 @@ void test_stringSubStringInChars_given_20_divide_5_skip_3_chars_and_length_is_1_
 	subString = stringSubStringInChars(str , 1);
 	
 	TEST_ASSERT_EQUAL_STRING("5" , subString);
+	
+	subStringDel(subString);
+	stringDel(str);
 }
 
-/*#35
+/*
  * Given "12+34*67" skip 4 characters and take the remaining character "4*67" as substring
  */
 void test_stringSubStringInChars_given_12_plus_34_times_67_skip_4_chars_and_length_is_4_should_return_9_times_67(void)
@@ -522,9 +661,12 @@ void test_stringSubStringInChars_given_12_plus_34_times_67_skip_4_chars_and_leng
 	subString = stringSubStringInChars(str , 4);
 	
 	TEST_ASSERT_EQUAL_STRING("4*67" , subString);
+	
+	subStringDel(subString);
+	stringDel(str);
 }
 
-/*#36
+/*
  * Given "149" should return 149 as a integer
  */
 void test_subStringToInteger_given_149_should_return_149_in_integer(void)
@@ -535,7 +677,7 @@ void test_subStringToInteger_given_149_should_return_149_in_integer(void)
 	TEST_ASSERT_EQUAL(149 , integer);
 }
 
-/*#37
+/*
  * Given "-50" should return 149 as a integer
  */
 void test_subStringToInteger_given_negative_50_should_return_negative_50_in_integer(void)

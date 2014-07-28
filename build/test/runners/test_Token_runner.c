@@ -37,9 +37,16 @@ extern void tearDown(void);
 extern void test_getToken_given_2_should_get_2_and_pass_to_number_token(void);
 extern void test_getToken_given_tab_841_should_get_841_and_pass_to_number_token(void);
 extern void test_getToken_given_tab_23_40_tab_and_getToken_x2_should_get_number_token_value_40(void);
+extern void test_getToken_given_tab_space_tab_and_getToken_should_return_NULL(void);
 extern void test_getToken_given_AND_operator_in_string_should_get_AND_operator_and_return_as_an_operator_token(void);
 extern void test_getToken_given_multiply_operator_in_string_should_get_multiply_operator_and_return_as_an_operator_token(void);
+extern void test_getToken_given_addition_operator_and_percentage_operator_in_string_call_getToken_x2_should_get_percentage_operator_and_return_as_an_operator_token(void);
 extern void test_getToken_given_open_square_bracket_should_return_NULL(void);
+extern void test_getToken_given_MAX_should_store_MAX_in_identifier_token(void);
+extern void test_getToken_given_MAX232_plus_4_should_store_MAX232_in_identifier_token(void);
+extern void test_getToken_given_456_MAX_should_store_456_MAX_in_identifier_token(void);
+extern void test_getToken_given_124_plus_MAX80_should_store_MAX80_in_identifier_token(void);
+extern void test_getToken_given_123zye_should_return_NULL(void);
 
 
 //=======Test Reset Option=====
@@ -55,12 +62,19 @@ int main(void)
 {
   Unity.TestFile = "test_Token.c";
   UnityBegin();
-  RUN_TEST(test_getToken_given_2_should_get_2_and_pass_to_number_token, 18);
-  RUN_TEST(test_getToken_given_tab_841_should_get_841_and_pass_to_number_token, 31);
-  RUN_TEST(test_getToken_given_tab_23_40_tab_and_getToken_x2_should_get_number_token_value_40, 44);
-  RUN_TEST(test_getToken_given_AND_operator_in_string_should_get_AND_operator_and_return_as_an_operator_token, 58);
-  RUN_TEST(test_getToken_given_multiply_operator_in_string_should_get_multiply_operator_and_return_as_an_operator_token, 69);
-  RUN_TEST(test_getToken_given_open_square_bracket_should_return_NULL, 80);
+  RUN_TEST(test_getToken_given_2_should_get_2_and_pass_to_number_token, 21);
+  RUN_TEST(test_getToken_given_tab_841_should_get_841_and_pass_to_number_token, 37);
+  RUN_TEST(test_getToken_given_tab_23_40_tab_and_getToken_x2_should_get_number_token_value_40, 53);
+  RUN_TEST(test_getToken_given_tab_space_tab_and_getToken_should_return_NULL, 71);
+  RUN_TEST(test_getToken_given_AND_operator_in_string_should_get_AND_operator_and_return_as_an_operator_token, 85);
+  RUN_TEST(test_getToken_given_multiply_operator_in_string_should_get_multiply_operator_and_return_as_an_operator_token, 102);
+  RUN_TEST(test_getToken_given_addition_operator_and_percentage_operator_in_string_call_getToken_x2_should_get_percentage_operator_and_return_as_an_operator_token, 119);
+  RUN_TEST(test_getToken_given_open_square_bracket_should_return_NULL, 138);
+  RUN_TEST(test_getToken_given_MAX_should_store_MAX_in_identifier_token, 152);
+  RUN_TEST(test_getToken_given_MAX232_plus_4_should_store_MAX232_in_identifier_token, 168);
+  RUN_TEST(test_getToken_given_456_MAX_should_store_456_MAX_in_identifier_token, 184);
+  RUN_TEST(test_getToken_given_124_plus_MAX80_should_store_MAX80_in_identifier_token, 200);
+  RUN_TEST(test_getToken_given_123zye_should_return_NULL, 218);
 
   return (UnityEnd());
 }

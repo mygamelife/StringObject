@@ -50,7 +50,7 @@ int main(void)
 {
   Unity.TestFile = "test_NumberToken.c";
   UnityBegin();
-  RUN_TEST(test_numberNew_given_value_12_should_store_inside_numberNew, 19);
+  RUN_TEST(test_numberNew_given_value_12_should_store_inside_numberNew, 20);
 
   return (UnityEnd());
 }

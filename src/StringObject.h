@@ -19,4 +19,6 @@ int stringRemoveChar(String *str);
 void stringSkip(String *str , int numOfCharToSkip);
 char *stringSubStringInChars(String *str , int length);
 int subStringToInteger(char *subString);
+void stringDel(String *str);
+void subStringDel(char *subString);
 #endif // StringObject_H
