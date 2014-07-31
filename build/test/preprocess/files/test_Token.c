@@ -446,7 +446,7 @@ void test_getToken_given_123zye_should_return_NULL(void)
 
   iden = (Identifier*)getToken(str);
 
-  UnityFail( ("Should throw ERR_INVALID_FORMAT exception"), (_U_UINT)229);;
+  UnityFail( ("Should throw ERR_NOT_NUMBER_TOKEN exception"), (_U_UINT)229);;
 
  }
 
@@ -454,11 +454,9 @@ void test_getToken_given_123zye_should_return_NULL(void)
 
  {
 
-  UnityAssertEqualNumber((_U_SINT)((ERR_INVALID_FORMAT)), (_U_SINT)((err)), ("Expect ERR_INVALID_FORMAT exception"), (_U_UINT)233, UNITY_DISPLAY_STYLE_INT);
+  UnityAssertEqualNumber((_U_SINT)((ERR_NOT_NUMBER_TOKEN)), (_U_SINT)((err)), ("Expect ERR_NOT_NUMBER_TOKEN exception"), (_U_UINT)233, UNITY_DISPLAY_STYLE_INT);
 
-  iden = (Identifier*)getToken(str);
-
-  if ((((iden)) == ((void *)0))) {} else {UnityFail( (" Expected NULL"), (_U_UINT)(_U_UINT)(_U_UINT)235);;};
+  if ((((iden)) == ((void *)0))) {} else {UnityFail( (" Expected NULL"), (_U_UINT)(_U_UINT)(_U_UINT)234);;};
 
  }
 

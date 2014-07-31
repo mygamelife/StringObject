@@ -28,7 +28,16 @@ typedef enum
 	AND_OP, // "&&"
 	XOR_OP, // "^"
 	BITWISE_OR_OP, // "|"
-	BITWISE_AND_OP // "&"
+	BITWISE_AND_OP, // "&"
+	NOT_OP, // "!"
+	BITWISE_NOT_OP, // "~"
+	BITWISE_SHIFT_LEFT_OP, // "<<"
+	BITWISE_SHIFT_RIGHT_OP, // ">>"
+	LESSER_OP, // "<"
+	GREATER_OP, // ">"
+	EQUAL_OP, // "=="
+	OPEN_BRACKET, // "("
+	CLOSE_BRACKET // ")"
 }OperatorID;
 
 typedef struct

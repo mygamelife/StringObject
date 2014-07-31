@@ -687,3 +687,39 @@ void test_subStringToInteger_given_negative_50_should_return_negative_50_in_inte
 
 	TEST_ASSERT_EQUAL(-50 , integer);
 }
+
+/*
+ * Given "1 + 10" given first position 0 and containSet is numSet
+ * 1 should contain in containSet and return 1 else 0
+ */
+void test_stringCharAtInSet_given_1_plus_10_should_return_1(void)
+{
+	String *str = stringNew("1 + 10");
+	int result = stringCharAtInSet(str , 0 , numSet);
+	
+	TEST_ASSERT_EQUAL(1 , result);
+}
+
+/*
+ * Given " ABC + 1" given position 2 and containSet is alphaSet
+ * 1 should contain in containSet and return 1 else 0
+ */
+void test_stringCharAtInSet_given_A_plus_1_should_return_1(void)
+{
+	String *str = stringNew("ABC + 1");
+	int result = stringCharAtInSet(str , 2 , alphaSet);
+	
+	TEST_ASSERT_EQUAL(1 , result);
+}
+
+/*
+ * Given "-123 + A" given position 5 and containSet is alphaNumericSet
+ * 1 should contain in containSet and return 1 else 0
+ */
+void test_stringCharAtInSet_given_negative_123_plus_A_should_return_0(void)
+{
+	String *str = stringNew("-123 + A");
+	int result = stringCharAtInSet(str , 5 , alphaNumericSet);
+	
+	TEST_ASSERT_EQUAL(0 , result);
+}

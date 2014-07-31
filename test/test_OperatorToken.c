@@ -31,7 +31,7 @@ void test_operatorNewByID_given_operator_ID_ADD_OP_should_store_operator_info_in
 void test_operatorNewByID_given_operator_ID_15_should_store_nothing_information_inside_operatorNewByID(void)
 {
 	Operator *operator;
-	operator = operatorNewByID(15);
+	operator = operatorNewByID(20);
 	
 	TEST_ASSERT_NULL(operator);
 	operatorDel(operator);

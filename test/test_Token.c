@@ -226,13 +226,12 @@ void test_getToken_given_123zye_should_return_NULL(void)
 	{
 		str = stringNew("123zye");
 		iden = (Identifier*)getToken(str);
-		TEST_FAIL_MESSAGE("Should throw ERR_INVALID_FORMAT exception");
+		TEST_FAIL_MESSAGE("Should throw ERR_NOT_NUMBER_TOKEN exception");
 	}
 	Catch(err)
 	{
-		TEST_ASSERT_EQUAL_MESSAGE(ERR_INVALID_FORMAT , err , "Expect ERR_INVALID_FORMAT exception");
-		iden = (Identifier*)getToken(str);
-		TEST_ASSERT_NULL(iden); //iden is NULL	
+		TEST_ASSERT_EQUAL_MESSAGE(ERR_NOT_NUMBER_TOKEN , err , "Expect ERR_NOT_NUMBER_TOKEN exception");
+		TEST_ASSERT_NULL(iden);
 	}
 	
 	identifierDel(iden);

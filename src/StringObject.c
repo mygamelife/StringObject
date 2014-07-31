@@ -4,6 +4,11 @@
 #include <string.h>
 #include <malloc.h>
 
+char *numSet = "0123456789";
+char *opSet = "+-*/%^&|!~()<>=";
+char *alphaNumericSet = "_abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+char *alphaSet = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+
 /* Create a new String
  * input :
  *		charString is the string that we receive
@@ -277,4 +282,25 @@ void subStringDel(char *subString)
 {
 	if(subString)
 		free(subString);
+}
+
+/* Check the relative position of the string if in contain in containSet
+ * input :
+ *			String *str is the string that contain a expression
+ *			containSet is the words that we want
+ * output :
+ *			if string contain words inside containSet return 1
+ *			else return 0
+ */
+int stringCharAtInSet(String *str , int relativePos , char *containSet)
+{
+	int i = 0;
+	
+	while(i != strlen(containSet))
+	{
+		if(str->string[relativePos] == containSet[i++])
+			return 1;
+	}
+	
+	return 0;
 }
