@@ -324,11 +324,11 @@ void test_getToken_given_MAX_should_store_MAX_in_identifier_token(void)
 
 
 
-void test_getToken_given_MAX232_plus_4_should_store_MAX232_in_identifier_token(void)
+void test_getToken_given__MAX_Mas2_should_store__MAX_Mas2_in_identifier_token(void)
 
 {
 
- String *str = stringNew("MAX232 + 4");
+ String *str = stringNew("_MAX_Mas2");
 
  Identifier *iden = (Identifier*)getToken(str);
 
@@ -338,7 +338,7 @@ void test_getToken_given_MAX232_plus_4_should_store_MAX232_in_identifier_token(v
 
  UnityAssertEqualNumber((_U_SINT)((IDENTIFIER_TOKEN)), (_U_SINT)((iden->type)), (((void *)0)), (_U_UINT)174, UNITY_DISPLAY_STYLE_INT);
 
- UnityAssertEqualString((const char*)("MAX232"), (const char*)(iden->name), (((void *)0)), (_U_UINT)175);
+ UnityAssertEqualString((const char*)("_MAX_Mas2"), (const char*)(iden->name), (((void *)0)), (_U_UINT)175);
 
 
 
@@ -356,11 +356,11 @@ void test_getToken_given_MAX232_plus_4_should_store_MAX232_in_identifier_token(v
 
 
 
-void test_getToken_given_456_MAX_should_store_456_MAX_in_identifier_token(void)
+void test_getToken_given_MAX232_plus_4_should_store_MAX232_in_identifier_token(void)
 
 {
 
- String *str = stringNew("456_MAX");
+ String *str = stringNew("MAX232 + 4");
 
  Identifier *iden = (Identifier*)getToken(str);
 
@@ -370,7 +370,7 @@ void test_getToken_given_456_MAX_should_store_456_MAX_in_identifier_token(void)
 
  UnityAssertEqualNumber((_U_SINT)((IDENTIFIER_TOKEN)), (_U_SINT)((iden->type)), (((void *)0)), (_U_UINT)190, UNITY_DISPLAY_STYLE_INT);
 
- UnityAssertEqualString((const char*)("456_MAX"), (const char*)(iden->name), (((void *)0)), (_U_UINT)191);
+ UnityAssertEqualString((const char*)("MAX232"), (const char*)(iden->name), (((void *)0)), (_U_UINT)191);
 
 
 
@@ -424,7 +424,7 @@ void test_getToken_given_124_plus_MAX80_should_store_MAX80_in_identifier_token(v
 
 
 
-void test_getToken_given_123zye_should_return_NULL(void)
+void test_getToken_given_456_MAX_should_return_NULL(void)
 
 {
 
@@ -434,7 +434,7 @@ void test_getToken_given_123zye_should_return_NULL(void)
 
  String *str;
 
- Identifier *iden;
+ Identifier *iden = ((void *)0);
 
 
 
@@ -442,7 +442,7 @@ void test_getToken_given_123zye_should_return_NULL(void)
 
  {
 
-  str = stringNew("123zye");
+  str = stringNew("456_MAX");
 
   iden = (Identifier*)getToken(str);
 
@@ -457,6 +457,58 @@ void test_getToken_given_123zye_should_return_NULL(void)
   UnityAssertEqualNumber((_U_SINT)((ERR_NOT_NUMBER_TOKEN)), (_U_SINT)((err)), ("Expect ERR_NOT_NUMBER_TOKEN exception"), (_U_UINT)233, UNITY_DISPLAY_STYLE_INT);
 
   if ((((iden)) == ((void *)0))) {} else {UnityFail( (" Expected NULL"), (_U_UINT)(_U_UINT)(_U_UINT)234);;};
+
+ }
+
+
+
+ identifierDel(iden);
+
+ stringDel(str);
+
+}
+
+
+
+
+
+
+
+
+
+void test_getToken_given_123zye_should_return_NULL(void)
+
+{
+
+ unsigned int err;
+
+
+
+ String *str;
+
+ Identifier *iden = ((void *)0);
+
+
+
+ { jmp_buf *PrevFrame, NewFrame; unsigned int MY_ID = (0); PrevFrame = CExceptionFrames[(0)].pFrame; CExceptionFrames[MY_ID].pFrame = (jmp_buf*)(&NewFrame); CExceptionFrames[MY_ID].Exception = (0x5A5A5A5A); if (_setjmp(NewFrame) == 0) { if (&PrevFrame)
+
+ {
+
+  str = stringNew("123zye");
+
+  iden = (Identifier*)getToken(str);
+
+  UnityFail( ("Should throw ERR_NOT_NUMBER_TOKEN exception"), (_U_UINT)255);;
+
+ }
+
+ else { } CExceptionFrames[MY_ID].Exception = (0x5A5A5A5A); } else { err = CExceptionFrames[MY_ID].Exception; err=err; } CExceptionFrames[MY_ID].pFrame = PrevFrame; } if (CExceptionFrames[(0)].Exception != (0x5A5A5A5A))
+
+ {
+
+  UnityAssertEqualNumber((_U_SINT)((ERR_NOT_NUMBER_TOKEN)), (_U_SINT)((err)), ("Expect ERR_NOT_NUMBER_TOKEN exception"), (_U_UINT)259, UNITY_DISPLAY_STYLE_INT);
+
+  if ((((iden)) == ((void *)0))) {} else {UnityFail( (" Expected NULL"), (_U_UINT)(_U_UINT)(_U_UINT)260);;};
 
  }
 

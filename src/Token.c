@@ -24,22 +24,18 @@ Token *getToken(String *expression)
 		char *numSubString = stringSubStringInChars(removedWord , removedWord->length); //Removed numbers become substring
 		charAtThisPos = expression->startindex;
 		
-		//if character behind number token is alphabet A~Z or a~z it is invalid type
-		
+		//if character behind number token is alphabet A~Z/a~z or '_' it is not number type		
 		if(stringCharAtInSet(expression , charAtThisPos , alphaSet))
-		{
 			Throw(ERR_NOT_NUMBER_TOKEN);
-		}
 		
-		//if character behind number token is '_' it is identifier
-		else if(stringCharAtInSet(expression , charAtThisPos , alphaNumericSet))
-		{
-			String *removedWord = stringRemoveWordContaining (expression , alphaNumericSet);
-			char *idenSubString = stringSubStringInChars(removedWord , removedWord->length);
-			tempIden = strcat(numSubString , idenSubString);
-			Identifier *iden = identifierNew(tempIden);
-			return (Token*)iden;
-		}
+		// else if(stringCharAtInSet(expression , charAtThisPos , alphaNumericSet))
+		// {
+			// String *removedWord = stringRemoveWordContaining (expression , alphaNumericSet);
+			// char *idenSubString = stringSubStringInChars(removedWord , removedWord->length);
+			// tempIden = strcat(numSubString , idenSubString);
+			// Identifier *iden = identifierNew(tempIden);
+			// return (Token*)iden;
+		// }
 		
 		int integer = subStringToInteger(numSubString); //Convert substring to integer
 		Number *num = numberNew(integer); //get integer from subStringToInteger and create a new Number Token

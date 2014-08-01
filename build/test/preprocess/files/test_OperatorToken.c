@@ -62,7 +62,7 @@ void test_operatorNewByID_given_operator_ID_15_should_store_nothing_information_
 
  Operator *operator;
 
- operator = operatorNewByID(15);
+ operator = operatorNewByID(20);
 
 
 

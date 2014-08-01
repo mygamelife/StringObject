@@ -30,23 +30,26 @@
 - :test: test_getToken_given_MAX_should_store_MAX_in_identifier_token
   :line: 152
   :message: ''
-- :test: test_getToken_given_MAX232_plus_4_should_store_MAX232_in_identifier_token
+- :test: test_getToken_given__MAX_Mas2_should_store__MAX_Mas2_in_identifier_token
   :line: 168
   :message: ''
-- :test: test_getToken_given_456_MAX_should_store_456_MAX_in_identifier_token
+- :test: test_getToken_given_MAX232_plus_4_should_store_MAX232_in_identifier_token
   :line: 184
   :message: ''
 - :test: test_getToken_given_124_plus_MAX80_should_store_MAX80_in_identifier_token
   :line: 200
   :message: ''
-- :test: test_getToken_given_123zye_should_return_NULL
+- :test: test_getToken_given_456_MAX_should_return_NULL
   :line: 218
+  :message: ''
+- :test: test_getToken_given_123zye_should_return_NULL
+  :line: 244
   :message: ''
 :failures: []
 :ignores: []
 :counts:
-  :total: 13
-  :passed: 13
+  :total: 14
+  :passed: 14
   :failed: 0
   :ignored: 0
 :stdout: []

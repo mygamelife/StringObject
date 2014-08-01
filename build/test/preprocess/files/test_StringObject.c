@@ -1371,3 +1371,75 @@ void test_subStringToInteger_given_negative_50_should_return_negative_50_in_inte
  UnityAssertEqualNumber((_U_SINT)((-50)), (_U_SINT)((integer)), (((void *)0)), (_U_UINT)688, UNITY_DISPLAY_STYLE_INT);
 
 }
+
+
+
+
+
+
+
+
+
+
+
+void test_stringCharAtInSet_given_1_plus_10_should_return_1(void)
+
+{
+
+ String *str = stringNew("1 + 10");
+
+ int result = stringCharAtInSet(str , 0 , numSet);
+
+
+
+ UnityAssertEqualNumber((_U_SINT)((1)), (_U_SINT)((result)), (((void *)0)), (_U_UINT)700, UNITY_DISPLAY_STYLE_INT);
+
+}
+
+
+
+
+
+
+
+
+
+
+
+void test_stringCharAtInSet_given_A_plus_1_should_return_1(void)
+
+{
+
+ String *str = stringNew("ABC + 1");
+
+ int result = stringCharAtInSet(str , 2 , alphaSet);
+
+
+
+ UnityAssertEqualNumber((_U_SINT)((1)), (_U_SINT)((result)), (((void *)0)), (_U_UINT)712, UNITY_DISPLAY_STYLE_INT);
+
+}
+
+
+
+
+
+
+
+
+
+
+
+void test_stringCharAtInSet_given_negative_123_plus_A_should_return_0(void)
+
+{
+
+ String *str = stringNew("-123 + A");
+
+ int result = stringCharAtInSet(str , 5 , alphaNumericSet);
+
+
+
+ UnityAssertEqualNumber((_U_SINT)((0)), (_U_SINT)((result)), (((void *)0)), (_U_UINT)724, UNITY_DISPLAY_STYLE_INT);
+
+}

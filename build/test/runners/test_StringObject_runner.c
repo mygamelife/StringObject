@@ -74,6 +74,9 @@ extern void test_stringSubStringInChars_given_20_divide_5_skip_3_chars_and_lengt
 extern void test_stringSubStringInChars_given_12_plus_34_times_67_skip_4_chars_and_length_is_4_should_return_9_times_67(void);
 extern void test_subStringToInteger_given_149_should_return_149_in_integer(void);
 extern void test_subStringToInteger_given_negative_50_should_return_negative_50_in_integer(void);
+extern void test_stringCharAtInSet_given_1_plus_10_should_return_1(void);
+extern void test_stringCharAtInSet_given_A_plus_1_should_return_1(void);
+extern void test_stringCharAtInSet_given_negative_123_plus_A_should_return_0(void);
 
 
 //=======Test Reset Option=====
@@ -129,6 +132,9 @@ int main(void)
   RUN_TEST(test_stringSubStringInChars_given_12_plus_34_times_67_skip_4_chars_and_length_is_4_should_return_9_times_67, 656);
   RUN_TEST(test_subStringToInteger_given_149_should_return_149_in_integer, 672);
   RUN_TEST(test_subStringToInteger_given_negative_50_should_return_negative_50_in_integer, 683);
+  RUN_TEST(test_stringCharAtInSet_given_1_plus_10_should_return_1, 695);
+  RUN_TEST(test_stringCharAtInSet_given_A_plus_1_should_return_1, 707);
+  RUN_TEST(test_stringCharAtInSet_given_negative_123_plus_A_should_return_0, 719);
 
   return (UnityEnd());
 }

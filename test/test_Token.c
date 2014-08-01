@@ -163,6 +163,22 @@ void test_getToken_given_MAX_should_store_MAX_in_identifier_token(void)
 }
 
 /* 
+ * Given "_MAX_Mas2" should return store "_MAX_Mas2" in identifier token
+ */
+void test_getToken_given__MAX_Mas2_should_store__MAX_Mas2_in_identifier_token(void)
+{
+	String *str = stringNew("_MAX_Mas2");
+	Identifier *iden = (Identifier*)getToken(str);
+	
+	TEST_ASSERT_NOT_NULL(iden);
+	TEST_ASSERT_EQUAL(IDENTIFIER_TOKEN , iden->type);
+	TEST_ASSERT_EQUAL_STRING("_MAX_Mas2" , iden->name);
+	
+	identifierDel(iden);
+	stringDel(str);
+}
+
+/* 
  * Given "MAX232 + 4" should return store "MAX232 + 4" in identifier token
  */
 void test_getToken_given_MAX232_plus_4_should_store_MAX232_in_identifier_token(void)
@@ -173,22 +189,6 @@ void test_getToken_given_MAX232_plus_4_should_store_MAX232_in_identifier_token(v
 	TEST_ASSERT_NOT_NULL(iden);
 	TEST_ASSERT_EQUAL(IDENTIFIER_TOKEN , iden->type);
 	TEST_ASSERT_EQUAL_STRING("MAX232" , iden->name);
-	
-	identifierDel(iden);
-	stringDel(str);
-}
-
-/* 
- * Given "456_MAX" should return store "456_MAX" in identifier token
- */
-void test_getToken_given_456_MAX_should_store_456_MAX_in_identifier_token(void)
-{
-	String *str = stringNew("456_MAX");
-	Identifier *iden = (Identifier*)getToken(str);
-	
-	TEST_ASSERT_NOT_NULL(iden);
-	TEST_ASSERT_EQUAL(IDENTIFIER_TOKEN , iden->type);
-	TEST_ASSERT_EQUAL_STRING("456_MAX" , iden->name);
 	
 	identifierDel(iden);
 	stringDel(str);
@@ -213,6 +213,32 @@ void test_getToken_given_124_plus_MAX80_should_store_MAX80_in_identifier_token(v
 }
 
 /* 
+ * Given "456_MAX" should throw exception
+ */
+void test_getToken_given_456_MAX_should_return_NULL(void)
+{
+	CEXCEPTION_T err;
+	
+	String *str;
+	Identifier *iden = NULL;
+	
+	Try
+	{
+		str = stringNew("456_MAX");
+		iden = (Identifier*)getToken(str);
+		TEST_FAIL_MESSAGE("Should throw ERR_NOT_NUMBER_TOKEN exception");
+	}
+	Catch(err)
+	{
+		TEST_ASSERT_EQUAL_MESSAGE(ERR_NOT_NUMBER_TOKEN , err , "Expect ERR_NOT_NUMBER_TOKEN exception");
+		TEST_ASSERT_NULL(iden);
+	}
+	
+	identifierDel(iden);
+	stringDel(str);
+}
+
+/* 
  * Given "123Zye" should throw exception
  */
 void test_getToken_given_123zye_should_return_NULL(void)
@@ -220,7 +246,7 @@ void test_getToken_given_123zye_should_return_NULL(void)
 	CEXCEPTION_T err;
 	
 	String *str;
-	Identifier *iden;
+	Identifier *iden = NULL;
 	
 	Try
 	{

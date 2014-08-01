@@ -43,9 +43,10 @@ extern void test_getToken_given_multiply_operator_in_string_should_get_multiply_
 extern void test_getToken_given_addition_operator_and_percentage_operator_in_string_call_getToken_x2_should_get_percentage_operator_and_return_as_an_operator_token(void);
 extern void test_getToken_given_open_square_bracket_should_return_NULL(void);
 extern void test_getToken_given_MAX_should_store_MAX_in_identifier_token(void);
+extern void test_getToken_given__MAX_Mas2_should_store__MAX_Mas2_in_identifier_token(void);
 extern void test_getToken_given_MAX232_plus_4_should_store_MAX232_in_identifier_token(void);
-extern void test_getToken_given_456_MAX_should_store_456_MAX_in_identifier_token(void);
 extern void test_getToken_given_124_plus_MAX80_should_store_MAX80_in_identifier_token(void);
+extern void test_getToken_given_456_MAX_should_return_NULL(void);
 extern void test_getToken_given_123zye_should_return_NULL(void);
 
 
@@ -71,10 +72,11 @@ int main(void)
   RUN_TEST(test_getToken_given_addition_operator_and_percentage_operator_in_string_call_getToken_x2_should_get_percentage_operator_and_return_as_an_operator_token, 119);
   RUN_TEST(test_getToken_given_open_square_bracket_should_return_NULL, 138);
   RUN_TEST(test_getToken_given_MAX_should_store_MAX_in_identifier_token, 152);
-  RUN_TEST(test_getToken_given_MAX232_plus_4_should_store_MAX232_in_identifier_token, 168);
-  RUN_TEST(test_getToken_given_456_MAX_should_store_456_MAX_in_identifier_token, 184);
+  RUN_TEST(test_getToken_given__MAX_Mas2_should_store__MAX_Mas2_in_identifier_token, 168);
+  RUN_TEST(test_getToken_given_MAX232_plus_4_should_store_MAX232_in_identifier_token, 184);
   RUN_TEST(test_getToken_given_124_plus_MAX80_should_store_MAX80_in_identifier_token, 200);
-  RUN_TEST(test_getToken_given_123zye_should_return_NULL, 218);
+  RUN_TEST(test_getToken_given_456_MAX_should_return_NULL, 218);
+  RUN_TEST(test_getToken_given_123zye_should_return_NULL, 244);
 
   return (UnityEnd());
 }
