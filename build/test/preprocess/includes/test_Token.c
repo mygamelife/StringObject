@@ -1,9 +1,0 @@
----
-- CException.h
-- ErrorCode.h
-- IdentifierToken.h
-- NumberToken.h
-- OperatorToken.h
-- StringObject.h
-- Token.h
-- unity.h

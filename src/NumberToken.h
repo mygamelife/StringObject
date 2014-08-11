@@ -5,6 +5,7 @@
 typedef struct
 {
 	TokenType type;
+	String *line;
 	int value;
 }Number;
 
