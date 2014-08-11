@@ -731,7 +731,7 @@ void test_stringCharAtInSet_given_negative_123_plus_A_should_return_0(void)
 void test_stringSubstring_given_123_start_0_and_length_3_should_put_into_string_subStr(void)
 {
 	String *str = stringNew("123");
-	String *subStr = stringSubstring(str , 0 , 3);
+	String *subStr = stringSubString(str , 0 , 3);
 	
 	TEST_ASSERT_NOT_NULL(subStr);
 	TEST_ASSERT_EQUAL_STRING("123" , subStr->string);
@@ -749,7 +749,7 @@ void test_stringSubstring_given_123_start_0_and_length_3_should_put_into_string_
 void test_stringSubstring_given_1_plus_23_start_3_and_length_1_should_put_into_string_subStr(void)
 {
 	String *str = stringNew("1+23");
-	String *subStr = stringSubstring(str , 3 , 1);
+	String *subStr = stringSubString(str , 3 , 1);
 	
 	TEST_ASSERT_NOT_NULL(subStr);
 	TEST_ASSERT_EQUAL_STRING("1+23" , subStr->string);
@@ -761,13 +761,13 @@ void test_stringSubstring_given_1_plus_23_start_3_and_length_1_should_put_into_s
 }
 
 /*
- * Given string "12-32" and start index is 6 and length is 3
+ * Given string "12-32" and start index is 7 and length is 3
  * should store 5 in start index and length should be 0
  */
-void test_stringSubstring_given_12_minus_32_start_6_and_length_3_should_put_5_into_string_subStr_startindex_and_length_0(void)
+void test_stringSubstring_given_12_minus_32_start_7_and_length_3_should_put_5_into_string_subStr_startindex_and_length_0(void)
 {
 	String *str = stringNew("12-32");
-	String *subStr = stringSubstring(str , 7 , 3);
+	String *subStr = stringSubString(str , 7 , 3);
 	
 	TEST_ASSERT_NOT_NULL(subStr);
 	TEST_ASSERT_EQUAL_STRING("12-32" , subStr->string);
@@ -776,4 +776,99 @@ void test_stringSubstring_given_12_minus_32_start_6_and_length_3_should_put_5_in
 	
 	stringDel(str);
 	stringDel(subStr);
+}
+
+/*
+ * Given string "Cow" and start index is 3 and length is 3
+ * should store 3 in start index and length should be 0
+ */
+void test_stringSubstring_given_Cow_start_3_and_length_3_should_put_3_into_string_subStr_startindex_and_length_0(void)
+{
+	String *str = stringNew("Cow");
+	String *subStr = stringSubString(str , 3 , 3);
+	
+	TEST_ASSERT_NOT_NULL(subStr);
+	TEST_ASSERT_EQUAL_STRING("Cow" , subStr->string);
+	TEST_ASSERT_EQUAL(3 , subStr->startindex);
+	TEST_ASSERT_EQUAL(0 , subStr->length);
+	
+	stringDel(str);
+	stringDel(subStr);
+}
+
+/*
+ * Given string "+-" and operator set
+ * should remove only one operator "+" 
+ */
+void test_stringRemoveOperator_minus_plus_operator_and_opSet_should_get_minus_operator(void)
+{
+	String *str = stringNew("+-");
+	String *removedOp = stringRemoveOperator(str , opSet);
+	
+	TEST_ASSERT_NOT_NULL(removedOp);
+	TEST_ASSERT_EQUAL_STRING("+-" , removedOp->string);
+	TEST_ASSERT_EQUAL(0 , removedOp->startindex);
+	TEST_ASSERT_EQUAL(1 , removedOp->length);
+	TEST_ASSERT_EQUAL(1 , str->startindex);
+	TEST_ASSERT_EQUAL(1 , str->length);
+	
+	stringDel(str);
+}
+
+/*
+ * Given string "&&" and operator set
+ * should remove only one operator "&&", start index = 0 and length is 2
+ */
+void test_stringRemoveOperator_logical_AND_operator_and_opSet_should_get_logical_AND_operator(void)
+{
+	String *str = stringNew("&&");
+	String *removedOp = stringRemoveOperator(str , opSet);
+	
+	TEST_ASSERT_NOT_NULL(removedOp);
+	TEST_ASSERT_EQUAL_STRING("&&" , removedOp->string);
+	TEST_ASSERT_EQUAL(0 , removedOp->startindex);
+	TEST_ASSERT_EQUAL(2 , removedOp->length);
+	TEST_ASSERT_EQUAL(2 , str->startindex);
+	TEST_ASSERT_EQUAL(0 , str->length);
+	
+	stringDel(str);
+}
+
+/*
+ * Given string "||" and operator set
+ * should remove only one operator "||", start index = 0 and length is 2
+ */
+void test_stringRemoveOperator_logical_OR_operator_and_opSet_should_get_logical_OR_operator(void)
+{
+	String *str = stringNew("||");
+	String *removedOp = stringRemoveOperator(str , opSet);
+	
+	TEST_ASSERT_NOT_NULL(removedOp);
+	TEST_ASSERT_EQUAL_STRING("||" , removedOp->string);
+	TEST_ASSERT_EQUAL(0 , removedOp->startindex);
+	TEST_ASSERT_EQUAL(2 , removedOp->length);
+	TEST_ASSERT_EQUAL(2 , str->startindex);
+	TEST_ASSERT_EQUAL(0 , str->length);
+	
+	stringDel(str);
+}
+
+/*
+ * Given string "4" and operator set
+ * should remove only one operator "||", start index = 0 and length is 2
+ */
+void test_stringRemoveOperator_4_operator_and_opSet_should_get_logical_OR_operator(void)
+{
+	String *str = stringNew("+||");
+	String *removedOp = stringRemoveOperator(str , opSet);
+	removedOp = stringRemoveOperator(str , opSet);
+	
+	TEST_ASSERT_NOT_NULL(removedOp);
+	TEST_ASSERT_EQUAL_STRING("+||" , removedOp->string);
+	TEST_ASSERT_EQUAL(1 , removedOp->startindex);
+	TEST_ASSERT_EQUAL(2 , removedOp->length);
+	TEST_ASSERT_EQUAL(3 , str->startindex);
+	TEST_ASSERT_EQUAL(0 , str->length);
+	
+	stringDel(str);
 }

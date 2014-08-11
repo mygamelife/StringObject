@@ -27,4 +27,6 @@ int subStringToInteger(char *subString);
 void stringDel(String *str);
 void subStringDel(char *subString);
 int stringCharAtInSet(String *str , int relativePos , char *containSet);
+String *stringSubString(String *str , int start , int length);
+String *stringRemoveOperator(String *str , char *containSet);
 #endif // StringObject_H

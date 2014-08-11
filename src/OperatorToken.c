@@ -1,5 +1,6 @@
 #include "OperatorToken.h"
 #include <malloc.h>
+#include <stdio.h>
 #define PRIMARY_TABLE_SIZE (sizeof(primaryOperatorTable)/sizeof(OperatorInfo))
 
 /* Operator Table contain all the operator information

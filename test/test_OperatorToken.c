@@ -53,6 +53,21 @@ void test_operatorNewByName_given_multiply_operator_name_should_store_multiply_o
 	operatorDel(operator);
 }
 
+/*#3
+ * Test create new operator token identify by the operator name, given operator name "-"
+ * operator->info shouldn't be NULL and operator->info should contain operator information
+ */
+void test_operatorNewByName_given_minus_operator_name_should_store_minus_operator_info(void)
+{
+	Operator *operator;
+	operator = operatorNewByName("-");
+	
+	TEST_ASSERT_NOT_NULL(operator->info);
+	TEST_ASSERT_EQUAL_STRING("-" , operator->info->name);
+	TEST_ASSERT_EQUAL(SUB_OP , operator->info->id);
+	TEST_ASSERT_EQUAL(70 , operator->info->precedence);
+	operatorDel(operator);
+}
 /*#4
  * Test create new operator token identify by the operator name, given operator name "]"
  * operator->info should be NULL and operator->info contain nothing

@@ -1,6 +1,7 @@
 #ifndef OperatorToken_H
 #define OperatorToken_H
 #include "Token.h"
+#include "StringObject.h"
 
 typedef enum
 {
@@ -53,6 +54,7 @@ typedef struct
 {
 	TokenType type;
 	OperatorInfo *info;
+	String *line;
 }Operator;
 
 Operator *operatorNewByID(OperatorID id);

@@ -304,3 +304,74 @@ int stringCharAtInSet(String *str , int relativePos , char *containSet)
 	
 	return 0;
 }
+
+/* Get the substring location out from the string 
+ * input :
+ *			start is the start location for the substring
+ *			length is the total character of the substring
+ * return :
+ *		 	return the subString	
+ */
+String *stringSubString(String *str , int start , int length)
+{
+	String *subStr = stringNew(str->string);
+	
+	if(start >= strlen(subStr->string))
+	{
+		subStr->startindex = strlen(subStr->string);
+		subStr->length = 0;
+		return subStr;
+	}
+	
+	subStr->startindex = start;
+	subStr->length = length;
+	// printf("start = %d\n" , subStr->startindex);
+	// printf("length = %d\n" , subStr->length);
+	return subStr;
+}
+
+String *stringRemoveOperator(String *str , char *containSet)
+{
+	int i = str->startindex , j = 0;
+	
+	String *removedWord = stringNew(str->string); //create new String for removedWord
+	removedWord->length = 0;
+	
+	while(i < strlen(str->string))
+	{
+		while(j != strlen(containSet))
+		{
+			if(str->string[i] == containSet[j]) //searching is containSet inside the string
+			{
+				if(str->string[i] == '&' && str->string[i+1] == '&') //check "&&" operator
+				{
+					removedWord->startindex = i;
+					removedWord->length = 2;
+					str->startindex = i+2;
+					str->length -= 2;
+					return removedWord;
+				}
+				
+				else if(str->string[i] == '|' && str->string[i+1] == '|') //check "||" operator
+				{
+					removedWord->startindex = i;
+					removedWord->length = 2;
+					str->startindex = i+2;
+					str->length -= 2;
+					return removedWord;
+				}
+				
+				removedWord->startindex = i;
+				removedWord->length++;
+				str->startindex = i+1;
+				str->length--;
+				return removedWord;	
+			}
+				
+			j++;
+		}
+		i++;		
+		j = 0;
+	}
+	return removedWord;
+}
