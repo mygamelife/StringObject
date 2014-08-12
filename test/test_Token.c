@@ -132,19 +132,7 @@ void test_getToken_given_addition_operator_and_percentage_operator_in_string_cal
 	stringDel(str);
 }
 
-/* 
- * Given " [ " should return NULL because " [ " is not in the primaryOperatorTable
- */
-void test_getToken_given_open_square_bracket_should_return_NULL(void)
-{
-	String *str = stringNew(" [ ");
-	Operator *op = (Operator*)getToken(str);
-	
-	TEST_ASSERT_NULL(op);
-	
-	operatorDel(op);
-	stringDel(str);
-}
+
 
 /* 
  * Given "MAX" should return store "MAX" in identifier token

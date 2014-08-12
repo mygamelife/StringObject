@@ -5,7 +5,7 @@
 #include <malloc.h>
 
 char *numSet = "0123456789";
-char *opSet = "+-*/%^&|!~()<>=";
+char *opSet = "~!@#$%^&*()_-+={}|;:\'<,.>/?";
 char *alphaNumericSet = "_abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
 char *alphaSet = "_abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
@@ -343,24 +343,59 @@ String *stringRemoveOperator(String *str , char *containSet)
 		{
 			if(str->string[i] == containSet[j]) //searching is containSet inside the string
 			{
-				if(str->string[i] == '&' && str->string[i+1] == '&') //check "&&" operator
+				if(str->string[i] == '&') //check "&" operator
 				{
-					removedWord->startindex = i;
-					removedWord->length = 2;
-					str->startindex = i+2;
-					str->length -= 2;
-					return removedWord;
+					if(str->string[i+1] == '&') //check "&&" operator
+					{
+						removedWord->startindex = i;
+						removedWord->length = 2;
+						str->startindex = i+2;
+						str->length -= 2;
+						return removedWord;
+					}					
+					goto jump;
 				}
 				
-				else if(str->string[i] == '|' && str->string[i+1] == '|') //check "||" operator
+				else if(str->string[i] == '|') //check "||" operator
 				{
-					removedWord->startindex = i;
-					removedWord->length = 2;
-					str->startindex = i+2;
-					str->length -= 2;
-					return removedWord;
+					if(str->string[i+1] == '|')
+					{
+						removedWord->startindex = i;
+						removedWord->length = 2;
+						str->startindex = i+2;
+						str->length -= 2;
+						return removedWord;
+					}
+					goto jump;
 				}
 				
+				else if(str->string[i] == '<') //check "<<" operator
+				{
+					if(str->string[i+1] == '<')
+					{
+						removedWord->startindex = i;
+						removedWord->length = 2;
+						str->startindex = i+2;
+						str->length -= 2;
+						return removedWord;
+					}
+					goto jump;
+				}
+				
+				else if(str->string[i] == '>') //check ">>" operator
+				{
+					if(str->string[i+1] == '>')
+					{
+						removedWord->startindex = i;
+						removedWord->length = 2;
+						str->startindex = i+2;
+						str->length -= 2;
+						return removedWord;
+					}
+					goto jump;
+				}
+				
+jump:
 				removedWord->startindex = i;
 				removedWord->length++;
 				str->startindex = i+1;

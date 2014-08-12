@@ -1,6 +1,8 @@
 #include "OperatorToken.h"
 #include <malloc.h>
 #include <stdio.h>
+#include "CException.h"
+#include "ErrorCode.h"
 #define PRIMARY_TABLE_SIZE (sizeof(primaryOperatorTable)/sizeof(OperatorInfo))
 
 /* Operator Table contain all the operator information
@@ -57,7 +59,7 @@ Operator *operatorNewByID(OperatorID id)
 		}
 	}
 	
-	return NULL;
+	Throw(ERR_UNKNOWN_OPERATOR);
 }
 
 /* Create new structure for operator (Identify by ID)
@@ -81,9 +83,10 @@ Operator *operatorNewByName(char *name)
 			op->info = &primaryOperatorTable[i];
 			return op;
 		}
+		
 	}
 	
-	return NULL;
+	Throw(ERR_UNKNOWN_OPERATOR);
 }
 
 /* Delete operator token

@@ -80,10 +80,16 @@ void test_getToken_given_plus_minus_op_line_should_contain_the_OperatorToken_loc
 
 	TEST_ASSERT_NOT_NULL(op);
 	TEST_ASSERT_EQUAL(OPERATOR_TOKEN , op->type);
-	TEST_ASSERT_EQUAL_STRING("+" , op->info->name);
 	TEST_ASSERT_EQUAL(ADD_OP , op->info->id);
-	TEST_ASSERT_EQUAL(70 , op->info->precedence);
 	TEST_ASSERT_EQUAL(0 , op->line->startindex);
+	TEST_ASSERT_EQUAL(1 , op->line->length);
+	operatorDel(op);
+	
+	op = (Operator*)getToken(str);
+	TEST_ASSERT_NOT_NULL(op);
+	TEST_ASSERT_EQUAL(OPERATOR_TOKEN , op->type);
+	TEST_ASSERT_EQUAL(SUB_OP , op->info->id);
+	TEST_ASSERT_EQUAL(1 , op->line->startindex);
 	TEST_ASSERT_EQUAL(1 , op->line->length);
 	
 	operatorDel(op);
@@ -95,37 +101,20 @@ void test_getToken_given_plus_minus_op_line_should_contain_the_OperatorToken_loc
  */
 void test_getToken_given_minusx3_4_op_line_should_contain_the_OperatorToken_location(void)
 {
-	String *str = stringNew("---4");
-	Operator *op;
-	op = (Operator*)getToken(str);
-
-	TEST_ASSERT_NOT_NULL(op);
-	TEST_ASSERT_EQUAL(OPERATOR_TOKEN , op->type);
-	TEST_ASSERT_EQUAL_STRING("-" , op->info->name);
-	TEST_ASSERT_EQUAL(SUB_OP , op->info->id);
-	TEST_ASSERT_EQUAL(70 , op->info->precedence);
-	TEST_ASSERT_EQUAL(0 , op->line->startindex);
-	TEST_ASSERT_EQUAL(1 , op->line->length);
+	String *str = stringNew("---4321");
+	Number *num;
+	operatorDel((Operator*)getToken(str));
+	operatorDel((Operator*)getToken(str));
+	operatorDel((Operator*)getToken(str));
 	
-	op = (Operator*)getToken(str);
-	TEST_ASSERT_NOT_NULL(op);
-	TEST_ASSERT_EQUAL(OPERATOR_TOKEN , op->type);
-	TEST_ASSERT_EQUAL_STRING("-" , op->info->name);
-	TEST_ASSERT_EQUAL(SUB_OP , op->info->id);
-	TEST_ASSERT_EQUAL(70 , op->info->precedence);
-	TEST_ASSERT_EQUAL(1 , op->line->startindex);
-	TEST_ASSERT_EQUAL(1 , op->line->length);
+	num = (Number*)getToken(str);
+	TEST_ASSERT_NOT_NULL(num);
+	TEST_ASSERT_EQUAL(NUMBER_TOKEN , num->type);
+	TEST_ASSERT_EQUAL(4321 , num->value);
+	TEST_ASSERT_EQUAL(3 , num->line->startindex);
+	TEST_ASSERT_EQUAL(4 , num->line->length);
 	
-	op = (Operator*)getToken(str);
-	TEST_ASSERT_NOT_NULL(op);
-	TEST_ASSERT_EQUAL(OPERATOR_TOKEN , op->type);
-	TEST_ASSERT_EQUAL_STRING("-" , op->info->name);
-	TEST_ASSERT_EQUAL(SUB_OP , op->info->id);
-	TEST_ASSERT_EQUAL(70 , op->info->precedence);
-	TEST_ASSERT_EQUAL(2 , op->line->startindex);
-	TEST_ASSERT_EQUAL(1 , op->line->length);
-	
-	operatorDel(op);
+	numberDel(num);
 	stringDel(str);
 }
 
@@ -146,6 +135,7 @@ void test_getToken_given_4_logical_AND_8_and_getToken_2times_should_get_NumberTo
 	TEST_ASSERT_EQUAL(4 , num->value);
 	TEST_ASSERT_EQUAL(0 , num->line->startindex);
 	TEST_ASSERT_EQUAL(1 , num->line->length);
+	numberDel(num);
 	
 	op = (Operator*)getToken(str);
 
@@ -158,5 +148,42 @@ void test_getToken_given_4_logical_AND_8_and_getToken_2times_should_get_NumberTo
 	TEST_ASSERT_EQUAL(2 , op->line->length);
 	
 	operatorDel(op);
+	stringDel(str);
+}
+
+/* 
+ * Given "|| | +" and getToken 2times
+ * should get "||" , "|" and "+" operatorToken 
+ */
+void test_getToken_given_logical_OR_BITWISE_OR_and_ADD_operator_should_get_these_3_operator_token(void)
+{
+	String *str = stringNew("|| | +");
+	Number *num;
+	Operator *op;
+	
+	op = (Operator*)getToken(str);
+	
+	TEST_ASSERT_NOT_NULL(op);
+	TEST_ASSERT_EQUAL(OPERATOR_TOKEN , op->type);
+	TEST_ASSERT_EQUAL(0 , op->line->startindex);
+	TEST_ASSERT_EQUAL(2 , op->line->length);
+	operatorDel(op);
+	
+	op = (Operator*)getToken(str);
+
+	TEST_ASSERT_NOT_NULL(op);
+	TEST_ASSERT_EQUAL(OPERATOR_TOKEN , op->type);
+	TEST_ASSERT_EQUAL(3 , op->line->startindex);
+	TEST_ASSERT_EQUAL(1 , op->line->length);	
+	operatorDel(op);
+	
+	op = (Operator*)getToken(str);
+
+	TEST_ASSERT_NOT_NULL(op);
+	TEST_ASSERT_EQUAL(OPERATOR_TOKEN , op->type);
+	TEST_ASSERT_EQUAL(5 , op->line->startindex);
+	TEST_ASSERT_EQUAL(1 , op->line->length);	
+	operatorDel(op);
+	
 	stringDel(str);
 }

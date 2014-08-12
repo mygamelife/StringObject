@@ -1,6 +1,7 @@
 #include "unity.h"
 #include "OperatorToken.h"
-
+#include "CException.h"
+#include "ErrorCode.h"
 void setUp(void)
 {
 }
@@ -25,15 +26,24 @@ void test_operatorNewByID_given_operator_ID_ADD_OP_should_store_operator_info_in
 }
 
 /*#2
- * Test create new operator token identify by the operator ID, given plus operator ID 15
- * operator->info should be NULL and don't contain any information about operator
+ * Given UNKNOWN OPERATOR ID and should throw an exception error
  */
-void test_operatorNewByID_given_operator_ID_15_should_store_nothing_information_inside_operatorNewByID(void)
+void test_operatorNewByID_given_operator_ID_UNKNOWN_OP_should_Throw_Exception(void)
 {
-	Operator *operator;
-	operator = operatorNewByID(20);
+	CEXCEPTION_T err;
+	Operator *operator = NULL;
 	
-	TEST_ASSERT_NULL(operator);
+	Try
+	{
+		operator = operatorNewByID(UNKNOWN_OP);
+		TEST_FAIL_MESSAGE("Should throw ERR_UNKNOWN_OPERATOR exception");
+	}
+	Catch(err)
+	{
+		TEST_ASSERT_EQUAL_MESSAGE(ERR_UNKNOWN_OPERATOR , err , "Expect ERR_UNKNOWN_OPERATOR exception");
+		TEST_ASSERT_NULL(operator);
+	}
+	
 	operatorDel(operator);
 }
 
@@ -68,15 +78,43 @@ void test_operatorNewByName_given_minus_operator_name_should_store_minus_operato
 	TEST_ASSERT_EQUAL(70 , operator->info->precedence);
 	operatorDel(operator);
 }
+
 /*#4
- * Test create new operator token identify by the operator name, given operator name "]"
- * operator->info should be NULL and operator->info contain nothing
+ * Given "[" operator should throw an exception 
+ * because this operator not contain in primary operator table
  */
 void test_operatorNewByName_given_square_bracket_name_should_store_nothing(void)
 {
-	Operator *operator;
-	operator = operatorNewByName("[");
+	CEXCEPTION_T err;
+	Operator *operator;	
 	
-	TEST_ASSERT_NULL(operator);
+	Try
+	{
+		operator = operatorNewByName("[");
+		TEST_FAIL_MESSAGE("Should throw ERR_UNKNOWN_OPERATOR exception");
+	}
+	Catch(err)
+	{
+		TEST_ASSERT_EQUAL_MESSAGE(ERR_UNKNOWN_OPERATOR , err , "Expect ERR_UNKNOWN_OPERATOR exception");
+	}
+	
+	operatorDel(operator);
+}
+
+void test_operatorNewByName_given_curly_bracket_name_should_store_nothing(void)
+{
+	CEXCEPTION_T err;
+	Operator *operator;	
+	
+	Try
+	{
+		operator = operatorNewByName("{}");
+		TEST_FAIL_MESSAGE("Should throw ERR_UNKNOWN_OPERATOR exception");
+	}
+	Catch(err)
+	{
+		TEST_ASSERT_EQUAL_MESSAGE(ERR_UNKNOWN_OPERATOR , err , "Expect ERR_UNKNOWN_OPERATOR exception");
+	}
+	
 	operatorDel(operator);
 }

@@ -61,7 +61,7 @@ Token *getToken(String *expression)
 		return (Token*)iden;
 	}
 	
-	//if character not start with A~Z/a~z , '_' or numbers it is operator token
+	// if character not start with A~Z/a~z , '_' or numbers it is operator token
 	else if(stringCharAtInSet(expression , charAtThisPos , opSet)) 
 	{
 		String *removedWord = stringRemoveOperator(expression , opSet); //Remove operator in string
@@ -74,5 +74,5 @@ Token *getToken(String *expression)
 		return (Token*)op;
 	}
 	
-	return NULL;
+	
 }

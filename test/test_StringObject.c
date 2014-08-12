@@ -796,21 +796,41 @@ void test_stringSubstring_given_Cow_start_3_and_length_3_should_put_3_into_strin
 	stringDel(subStr);
 }
 
+// /*
+ // * Given string "+-" and operator set
+ // * should remove only one operator "+" 
+ // */
+// void test_stringRemoveOperator_minus_plus_operator_and_opSet_should_get_minus_operator(void)
+// {
+	// String *str = stringNew("+-");
+	// String *removedOp = stringRemoveOperator(str , opSet);
+	
+	// TEST_ASSERT_NOT_NULL(removedOp);
+	// TEST_ASSERT_EQUAL_STRING("+-" , removedOp->string);
+	// TEST_ASSERT_EQUAL(0 , removedOp->startindex);
+	// TEST_ASSERT_EQUAL(1 , removedOp->length);
+	// TEST_ASSERT_EQUAL(1 , str->startindex);
+	// TEST_ASSERT_EQUAL(1 , str->length);
+	
+	// stringDel(str);
+// }
+
 /*
- * Given string "+-" and operator set
- * should remove only one operator "+" 
+ * Given string "&" and operator set
+ * should remove only one operator "&", start index = 0 and length is 2
  */
-void test_stringRemoveOperator_minus_plus_operator_and_opSet_should_get_minus_operator(void)
+void test_stringRemoveOperator_logical_AND_operatorx3_and_opSet_should_get_Bitwise_AND_operator(void)
 {
-	String *str = stringNew("+-");
+	String *str = stringNew("& &&");
+	stringTrim(str);
 	String *removedOp = stringRemoveOperator(str , opSet);
+	stringTrim(str);
+	removedOp = stringRemoveOperator(str , opSet);
+	stringTrim(str);
 	
 	TEST_ASSERT_NOT_NULL(removedOp);
-	TEST_ASSERT_EQUAL_STRING("+-" , removedOp->string);
-	TEST_ASSERT_EQUAL(0 , removedOp->startindex);
-	TEST_ASSERT_EQUAL(1 , removedOp->length);
-	TEST_ASSERT_EQUAL(1 , str->startindex);
-	TEST_ASSERT_EQUAL(1 , str->length);
+	TEST_ASSERT_EQUAL(2 , removedOp->startindex);
+	TEST_ASSERT_EQUAL(2 , removedOp->length);
 	
 	stringDel(str);
 }
@@ -834,6 +854,30 @@ void test_stringRemoveOperator_logical_AND_operator_and_opSet_should_get_logical
 	stringDel(str);
 }
 
+/*
+ * Given string "|||" and operator set
+ * should remove only one operator "||" and one "|"
+ */
+void test_stringRemoveOperator_Three_OR_operator_and_should_remove_3_OR_Operator(void)
+{
+	String *str = stringNew("|||");
+	String *removedOp = stringRemoveOperator(str , opSet);
+	
+	TEST_ASSERT_NOT_NULL(removedOp);
+	TEST_ASSERT_EQUAL(0 , removedOp->startindex);
+	TEST_ASSERT_EQUAL(2 , removedOp->length);
+	TEST_ASSERT_EQUAL(2 , str->startindex);
+	TEST_ASSERT_EQUAL(1 , str->length);
+	
+	removedOp = stringRemoveOperator(str , opSet);
+	TEST_ASSERT_NOT_NULL(removedOp);
+	TEST_ASSERT_EQUAL(2 , removedOp->startindex);
+	TEST_ASSERT_EQUAL(1 , removedOp->length);
+	TEST_ASSERT_EQUAL(3 , str->startindex);
+	TEST_ASSERT_EQUAL(0 , str->length);
+	
+	stringDel(str);
+}
 /*
  * Given string "||" and operator set
  * should remove only one operator "||", start index = 0 and length is 2
