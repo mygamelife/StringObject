@@ -161,7 +161,7 @@ void test_getToken_given_logical_OR_BITWISE_OR_and_ADD_operator_should_get_these
 	Number *num;
 	Operator *op;
 	
-	op = (Operator*)getToken(str);
+	op = (Operator*)getToken(str); //get "||"
 	
 	TEST_ASSERT_NOT_NULL(op);
 	TEST_ASSERT_EQUAL(OPERATOR_TOKEN , op->type);
@@ -169,7 +169,7 @@ void test_getToken_given_logical_OR_BITWISE_OR_and_ADD_operator_should_get_these
 	TEST_ASSERT_EQUAL(2 , op->line->length);
 	operatorDel(op);
 	
-	op = (Operator*)getToken(str);
+	op = (Operator*)getToken(str); //get "|"
 
 	TEST_ASSERT_NOT_NULL(op);
 	TEST_ASSERT_EQUAL(OPERATOR_TOKEN , op->type);
@@ -177,12 +177,17 @@ void test_getToken_given_logical_OR_BITWISE_OR_and_ADD_operator_should_get_these
 	TEST_ASSERT_EQUAL(1 , op->line->length);	
 	operatorDel(op);
 	
-	op = (Operator*)getToken(str);
+	op = (Operator*)getToken(str); //get "+"
 
 	TEST_ASSERT_NOT_NULL(op);
 	TEST_ASSERT_EQUAL(OPERATOR_TOKEN , op->type);
 	TEST_ASSERT_EQUAL(5 , op->line->startindex);
 	TEST_ASSERT_EQUAL(1 , op->line->length);	
+	operatorDel(op);
+	
+	op = (Operator*)getToken(str); //get NULL because no more token
+
+	TEST_ASSERT_NULL(op);	
 	operatorDel(op);
 	
 	stringDel(str);
