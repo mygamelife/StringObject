@@ -33,7 +33,7 @@ void test_stringTrimLeft_should_skip_spaces_on_left_sides_0(void)
 	stringTrimLeft(str);
 	
 	TEST_ASSERT_EQUAL(1 , str->startindex);
-	TEST_ASSERT_EQUAL(4 , str->length);
+	TEST_ASSERT_EQUAL(3 , str->length);
 	
 	stringDel(str);
 }
@@ -47,7 +47,7 @@ void test_stringTrimLeft_should_skip_spaces_on_left_sides_1(void)
 	stringTrimLeft(str);
 	
 	TEST_ASSERT_EQUAL(2 , str->startindex);
-	TEST_ASSERT_EQUAL(5 , str->length);
+	TEST_ASSERT_EQUAL(3 , str->length);
 	
 	stringDel(str);
 }
@@ -61,7 +61,7 @@ void test_stringTrimLeft_should_skip_spaces_on_left_sides_2(void)
 	stringTrimLeft(str);
 	
 	TEST_ASSERT_EQUAL(3 , str->startindex);
-	TEST_ASSERT_EQUAL(10 , str->length);
+	TEST_ASSERT_EQUAL(7 , str->length);
 	
 	stringDel(str);
 }
@@ -118,7 +118,7 @@ void test_stringTrim_should_skip_spaces_on_left_and_right_sides_0(void)
 	stringTrim(str);
 		
 	TEST_ASSERT_EQUAL(1 , str->startindex);
-	TEST_ASSERT_EQUAL(7 , str->length);
+	TEST_ASSERT_EQUAL(6 , str->length);
 	
 	stringDel(str);
 }
@@ -132,7 +132,7 @@ void test_stringTrim_should_skip_spaces_on_left_and_right_sides_1(void)
 	stringTrim(str);
 
 	TEST_ASSERT_EQUAL(2 , str->startindex);
-	TEST_ASSERT_EQUAL(6 , str->length);
+	TEST_ASSERT_EQUAL(4 , str->length);
 	
 	stringDel(str);
 }
@@ -146,7 +146,7 @@ void test_stringTrim_should_skip_spaces_on_left_and_right_sides_2(void)
 	stringTrim(str);
 
 	TEST_ASSERT_EQUAL(4 , str->startindex);
-	TEST_ASSERT_EQUAL(10 , str->length);
+	TEST_ASSERT_EQUAL(6 , str->length);
 	
 	stringDel(str);
 }

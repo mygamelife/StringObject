@@ -34,7 +34,10 @@ String *stringNew(char *charString)
 void stringTrimLeft(String *str)
 {
 	while(isspace(str->string[str->startindex]))
+	{
 		str->startindex++;
+		str->length--;
+	}
 }
 
 /* To remove all spaces at right side

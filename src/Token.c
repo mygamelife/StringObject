@@ -28,7 +28,7 @@ Token *getToken(String *expression)
 
 	/*Character at first position*/
 	int charAtThisPos = expression->startindex;
-	
+
 	//if character start with numbers it is number token
 	if(stringCharAtInSet(expression , charAtThisPos , numSet))
 	{	

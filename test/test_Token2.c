@@ -167,6 +167,8 @@ void test_getToken_given_logical_OR_BITWISE_OR_and_ADD_operator_should_get_these
 	TEST_ASSERT_EQUAL(OPERATOR_TOKEN , op->type);
 	TEST_ASSERT_EQUAL(0 , op->line->startindex);
 	TEST_ASSERT_EQUAL(2 , op->line->length);
+	TEST_ASSERT_EQUAL(2 , str->startindex);	
+	TEST_ASSERT_EQUAL(4 , str->length);
 	operatorDel(op);
 	
 	op = (Operator*)getToken(str); //get "|"
@@ -174,7 +176,9 @@ void test_getToken_given_logical_OR_BITWISE_OR_and_ADD_operator_should_get_these
 	TEST_ASSERT_NOT_NULL(op);
 	TEST_ASSERT_EQUAL(OPERATOR_TOKEN , op->type);
 	TEST_ASSERT_EQUAL(3 , op->line->startindex);
-	TEST_ASSERT_EQUAL(1 , op->line->length);	
+	TEST_ASSERT_EQUAL(1 , op->line->length);
+	TEST_ASSERT_EQUAL(4 , str->startindex);	
+	TEST_ASSERT_EQUAL(2 , str->length);
 	operatorDel(op);
 	
 	op = (Operator*)getToken(str); //get "+"
@@ -182,13 +186,43 @@ void test_getToken_given_logical_OR_BITWISE_OR_and_ADD_operator_should_get_these
 	TEST_ASSERT_NOT_NULL(op);
 	TEST_ASSERT_EQUAL(OPERATOR_TOKEN , op->type);
 	TEST_ASSERT_EQUAL(5 , op->line->startindex);
-	TEST_ASSERT_EQUAL(1 , op->line->length);	
+	TEST_ASSERT_EQUAL(1 , op->line->length);
+	TEST_ASSERT_EQUAL(6 , str->startindex);	
+	TEST_ASSERT_EQUAL(0 , str->length);
 	operatorDel(op);
 	
 	op = (Operator*)getToken(str); //get NULL because no more token
 
 	TEST_ASSERT_NULL(op);	
 	operatorDel(op);
+	
+	stringDel(str);
+}
+
+void test_getToken_given_minus_18_BITWISE_OR_432_should_get_numToken_and_OperatorToken(void)
+{
+	Number *num;
+	Operator *op;
+	String *str = stringNew("- 18 | 4 32");
+	
+	op = (Operator*)getToken(str);
+	TEST_ASSERT_NOT_NULL(op);
+	TEST_ASSERT_EQUAL_STRING("-" , op->info->name);
+	TEST_ASSERT_EQUAL(0 , op->line->startindex);
+	TEST_ASSERT_EQUAL(1 , op->line->length);	
+	TEST_ASSERT_EQUAL(1 , str->startindex);	
+	TEST_ASSERT_EQUAL(10 , str->length);
+	operatorDel(op);	
+	
+	num = (Number*)getToken(str);
+	TEST_ASSERT_NOT_NULL(num);
+	TEST_ASSERT_EQUAL(NUMBER_TOKEN , num->type);
+	TEST_ASSERT_EQUAL(18 , num->value);
+	TEST_ASSERT_EQUAL(2 , num->line->startindex);
+	TEST_ASSERT_EQUAL(2 , num->line->length);
+	TEST_ASSERT_EQUAL(4 , str->startindex);	
+	TEST_ASSERT_EQUAL(7 , str->length);
+	numberDel(num);
 	
 	stringDel(str);
 }
